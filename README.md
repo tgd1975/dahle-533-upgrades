@@ -54,7 +54,7 @@ die Zunge an derselben Nutflanke an und das Spiel fällt aus der Messung heraus.
 
 Verlauf: Die erste Passprobe (eine beidseitig eingespannte Feder nahe der Anschlagfläche, 0,7 mm Vorspannung)
 war viel zu stramm und lag in Messernähe außerhalb der Schiene; die Magnettasche passte. Die zweite Fassung
-hatte 3,5 mm Zunge und zwei weiche Federzungen; auf Wunsch sind es 3,8 mm und keine Federn (2026-11-17). Die Nut
+hatte 3,5 mm Zunge und zwei weiche Federzungen; auf Wunsch sind es 3,8 mm und keine Federn (2026-11-17). Die Passprobe dieser dritten Fassung passt (2026-11-17). Die Nut
 ist nur oben gemessen (4,0 mm) – klemmt die Zunge in der Tiefe oder über die Länge, `luft_nut` auf 0,3 stellen.
 
 Stellschrauben in `cad/masse.toml`, Abschnitt `[asym]`: `luft_nut` (Spiel der starren Zunge);
