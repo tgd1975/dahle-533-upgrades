@@ -39,10 +39,12 @@ HALTER = {
     "modul_d": 9.0,        # Messinghülse des Lasermoduls – geschätzt
     "wand": 1.5,           # Wand der offenen Unterseite
     "tasche": 3.1,         # Tiefe der offenen Unterseite
-    "zu_vorn_d": 5.7,      # Zapfen unten vorne: Steckzapfen, sitzt im Blechloch
-    "zu_vorn_rand": 3.0,   # ... Abstand zur Vorderkante
-    "zu_hint_d": 4.5,      # Zapfen unten hinten: Gewinde für die M3-Schraube mit Feder
-    "zu_hint_rand": 2.9,   # ... Abstand zur Hinterkante
+    # Zapfen unten, Kettenmaß von vorn: 3,1 + 5,7 + 4,5 + 4,6 + 3,1 gemessen = 21,0; Außenmaß 21,5.
+    # Ø je + 0,1, die übrigen 0,3 gleich auf die drei Abstände: 3,2 + 5,8 + 4,6 + 4,7 + 3,2 = 21,5.
+    "zu_vorn_d": 5.8,      # Zapfen unten vorne: Steckzapfen, sitzt im Blechloch
+    "zu_vorn_rand": 3.2,   # ... Abstand zur Vorderkante
+    "zu_hint_d": 4.7,      # Zapfen unten hinten: Gewinde für die M3-Schraube mit Feder
+    "zu_hint_rand": 3.2,   # ... Abstand zur Hinterkante
     "zu_h": 4.2,           # Zapfen unten stehen unter der Unterseite vor
     "zo_d": 6.4,           # Zapfen oben auf dem Halbbogen, innen Innensechskant für den Inbusschlüssel
     "zo_abst": 4.2,        # ... Vorderkante Halbbogen (Vorbau) bis Zapfenrand
@@ -302,7 +304,7 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     o.append(mass_h(seite, y_frei, l, hebel_top, zahl(h["rohr_frei"]), -14, ref_v=hh))
     o.append(mass_h(seite, -h["rohr_v"], zo_y - h["zo_d"] / 2, hh + h["zo_h"], zahl(h["zo_abst"]), -26, ref_v=hh))
     luecke = (yu_h - h["zu_hint_d"] / 2) - (yu_v + h["zu_vorn_d"] / 2)
-    o.append(mass_h(seite, yu_v + h["zu_vorn_d"] / 2, yu_h - h["zu_hint_d"] / 2, -h["zu_h"], f"{zahl(luecke)} ?", 16))
+    o.append(mass_h(seite, yu_v + h["zu_vorn_d"] / 2, yu_h - h["zu_hint_d"] / 2, -h["zu_h"], zahl(luecke), 16))
     o.append(mass_v(seite, za + rr, hebel_top, l, zahl(h["hebel_h"]), 28, ref_u=yh + h["hebel_d"] / 2))
     o.append(mass_v(seite, -h["zu_h"], 0, l, zahl(h["zu_h"]), 28, ref_u=l))
     o.append(mass_v(seite, hh, hh + h["zo_h"], zo_y - h["zo_d"] / 2, zahl(h["zo_h"]), -14))
@@ -327,8 +329,7 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     o.append(f'<text x="{px0 + 30}" y="{py0 + 36}" text-anchor="middle" font-size="11" fill="{MASS}">Projektionsmethode 3</text>')
 
     offen = ["Bitte nachmessen (in der Zeichnung mit „?“):",
-             "1  Lücke zwischen den unteren Zapfen: gemessen 4,3, aus Länge 21,5 und Randabständen 3,0 / 2,9 folgen 5,4",
-             "2  Drehrohr steht hinten 1,3 über (24,0 gesamt minus 21,5 Körper minus 1,2 Vorbau)"]
+             "1  Drehrohr steht hinten 1,3 über (24,0 gesamt minus 21,5 Körper minus 1,2 Vorbau)"]
     for k, t in enumerate(offen):
         gewicht = ' font-weight="bold"' if k == 0 else ""
         o.append(f'<text x="20" y="{730 + k * 22}" font-size="13"{gewicht}>{t}</text>')

@@ -245,7 +245,7 @@ def kleinteile() -> str:
     o.append(f'<circle cx="{fx0}" cy="{fy1}" r="{(da + di)/4*s}" fill="none" stroke="{LINIE}" stroke-width="{dr*s}"/>')
     o.append(mass_h(fx0 - di/2*s, fx0 + di/2*s, fy1, "", oben=False))
     o.append(f'<text x="{fx0 + da/2*s + 12}" y="{fy1 + 5}" font-size="12">ca. Ø{zahl(di)} innen</text>')
-    o.append(f'<text x="{fx0}" y="{fy1 + da/2*s + 28}" text-anchor="middle" font-size="12">3 Windungen; sitzt auf der M3-Schraube im Zapfen Ø4,5</text>')
+    o.append(f'<text x="{fx0}" y="{fy1 + da/2*s + 28}" text-anchor="middle" font-size="12">3 Windungen; sitzt auf der M3-Schraube im Zapfen Ø4,7</text>')
 
     # Taster: Seitenansicht
     tx0, ty0 = 800.0, 140.0
