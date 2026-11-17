@@ -40,6 +40,21 @@ des Moduls, USB-Netzteile liefern bis 5,25 V.
 
 Alternative mit einstellbarem Fokus (dünnere Linie): Picotronic LC650-5-3-F(14x45), Klasse 1, aber 153,90 €.
 
+### Alternative: Laser aus dem KW-triO 13036
+
+Ein vorhandener Hebelschneider KW-triO 13036 („Paper Guillotine with Laser Positioning System“, A4, 315 mm
+Schnittlänge) hat einen Schnittlinien-Laser, der sich ausbauen lässt. Was die Fotos des eingebauten Lasers zeigen:
+
+| Befund | Bedeutung für die 533 |
+|---|---|
+| Laserklasse 2 laut Typenschild, Leistung nicht angegeben (Klasse 2: sichtbar, höchstens 1 mW) | Der Fächer darf nur auf den Tisch fallen: Halter so geneigt, dass kein Strahl über die Waagerechte geht, dazu eine Blende oben |
+| rundes Messingmodul im Lagerblock am Drehpunkt, Austritt durch ein Loch in der Stirnseite knapp über dem Tisch | dieselbe Lage wie im Konzept, aber niedrig: Der KW-triO zeichnet aus dieser Höhe eine 315-mm-Linie, die 533 braucht 340 mm |
+| Innensechskantschraube oben im Lagerblock, mit Drehpfeilen | dreht die Linie; der Halter für die 533 hat seine eigene Einstellung |
+| 2 × AAA im Fuß eingeformt, roter Taster | 3 V wie beim Picotronic-Modul; Batteriefach und Taster bleiben im KW-triO, der Halter bekommt einen Batteriehalter 2 × AAA mit Schalter |
+
+Niedrig montiert braucht der Reiter keinen hohen Ausleger, und das Licht bleibt nahe am Tisch, weit unter Augenhöhe.
+Ob der Laser bei der 533 niedrig sitzen kann oder über den Lagerbock hinwegsehen muss, entscheidet L-2.
+
 ## Halter (geplant)
 
 | Einstellung | Wie |
@@ -57,8 +72,11 @@ Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf
 | L-1 (Streifen hinter der Schiene) | Breite der blauen Tischfläche zwischen hinterer Winkelanlage und Tischkante | Platz für die Haltemagnete des Reiters |
 | L-2 (Lagerbock) | Höhe und Breite des grauen Lagerbocks am Drehpunkt, über dem Tisch | Laser muss darüber hinwegsehen |
 | L-3 (Schienenende) | Abstand vom messerseitigen Ende der hinteren Winkelanlage zur Schnittkante | Länge des Auslegers |
+| L-4 (Austrittshöhe KW-triO) | Höhe der Mitte des Austrittslochs über dem Tisch des KW-triO – ohne Ausbau | Höhe, aus der der Laser eine brauchbare Linie zeichnet |
+| L-5 (Linienbeginn KW-triO) | Abstand vom Austrittsloch bis zum Beginn der Linie auf dem Tisch, und ob die Linie bis zum vorderen Ende reicht – ohne Ausbau | steilster Strahl des Fächers, Reichweite |
+| L-6 (Modul KW-triO) | Durchmesser und Länge des Moduls, Befestigung, Kabellänge – erst nach dem Ausbau | Aufnahme im Halter |
 
-Dazu ein Foto der hinteren rechten Ecke (Drehpunkt), schräg von oben.
+Dazu ein Foto der hinteren rechten Ecke der 533 (Drehpunkt), schräg von oben.
 
 ## Risiken
 
