@@ -233,6 +233,8 @@ def halter() -> str:
     o.append(f'<rect x="{fx(-zd/2)}" y="{fy(hh) - h["dreh_zapfen_h"]*s}" width="{zd*s}" height="{h["dreh_zapfen_h"]*s + 4}" {stil}/>')
     o.append(f'<rect x="{fx(-zd/2)}" y="{fy(0) - 4}" width="{zd*s}" height="{zu*s + 4}" {stil}/>')
     o.append(f'<path d="{pfad}" {stil}/>')
+    oben = (f"M{fx(-b/2)},{fy(achse)} A{r_bogen*s},{r_bogen*s} 0 0 1 {fx(b/2)},{fy(achse)} Z")
+    o.append(f'<path d="{oben}" fill="#cfd8e3" stroke="{LINIE}" stroke-width="1.6"/>')
     o.append(f'<circle cx="{fx(0)}" cy="{fy(achse)}" r="{h["ring_d"]/2*s}" fill="#d0d0d0" stroke="{LINIE}" stroke-width="1.4"/>')
     o.append(f'<circle cx="{fx(0)}" cy="{fy(achse)}" r="{4.5*s}" fill="#d9b44a" stroke="{LINIE}"/>')
     o.append(f'<line x1="{fx(-3)}" y1="{fy(achse)+2.6*s}" x2="{fx(3)}" y2="{fy(achse)-2.6*s}" stroke="{ROT}" stroke-width="2"/>')
@@ -263,8 +265,8 @@ def halter() -> str:
     for x, d in zip(pos_u, [h["zapfen_d"], h["zapfen2_d"]]):
         o.append(f'<rect x="{gx(st + x) - d/2*s}" y="{gy(0) - 4}" width="{d*s}" height="{zu*s + 4}" {stil}/>')
     o.append(f'<rect x="{gx(st)}" y="{gy(hh)}" width="{l*s}" height="{hh*s}" {stil}/>')
-    o.append(f'<rect x="{gx(st + l - dl)}" y="{gy(hh)}" width="{dl*s}" height="{hh*s}" fill="#cfd8e3" stroke="{LINIE}" stroke-width="1.6"/>')
-    o.append(f'<text x="{gx(st + l - dl/2)}" y="{gy(achse/2)}" text-anchor="middle" font-size="12">drehbar</text>')
+    o.append(f'<rect x="{gx(st + l - dl)}" y="{gy(hh)}" width="{dl*s}" height="{(hh - achse)*s}" fill="#cfd8e3" stroke="{LINIE}" stroke-width="1.6"/>')
+    o.append(f'<text x="{gx(st + l - dl/2)}" y="{gy((hh + achse)/2) + 5}" text-anchor="middle" font-size="12">drehbar</text>')
     o.append(f'<rect x="{gx(0)}" y="{gy(achse + h["ring_d"]/2)}" width="{st*s + 2}" height="{h["ring_d"]*s}" fill="#d0d0d0" stroke="{LINIE}" stroke-width="1.4"/>')
     o.append(f'<line x1="{gx(-6)}" y1="{gy(achse)}" x2="{gx(st + l + 6)}" y2="{gy(achse)}" stroke="{MASS}" stroke-dasharray="8,3,2,3"/>')
     o.append(f'<line x1="{gx(-12)}" y1="{gy(achse)}" x2="{gx(-2)}" y2="{gy(achse)}" stroke="{ROT}" stroke-width="3"/>')
@@ -281,7 +283,7 @@ def halter() -> str:
     xo = gx(st + pos_o[1]) + zd/2*s
     o.append(hilfslinie(xo, gy(hh) - dz*s, xo + 30, gy(hh) - dz*s))
     o.append(mass_v(xo + 26, gy(hh), gy(hh) - dz*s, "Hebel ?"))
-    o.append(mass_h(gx(st + l - dl), gx(st + l), gy(hh) + 16, f"{zahl(dl)}", oben=False))
+    o.append(mass_h(gx(st + l - dl), gx(st + l), gy(achse) + 14, f"{zahl(dl)}", oben=False))
     xo2 = gx(st + pos_o[0]) - zd/2*s
     o.append(hilfslinie(xo2, gy(hh) - h["zapfen_oben2"]*s, xo2 - 30, gy(hh) - h["zapfen_oben2"]*s))
     o.append(mass_v(xo2 - 26, gy(hh), gy(hh) - h["zapfen_oben2"]*s, f"{zahl(h['zapfen_oben2'])} ?", links=True))
@@ -319,7 +321,7 @@ def halter() -> str:
     # --- Legende: was fehlt
     fehl = [
         "Für den Halter am Reiter fehlen noch:",
-        "1  Höhe des Hebelzapfens auf dem Drehteil, Drehwinkel des Drehteils",
+        "1  Höhe des Hebelzapfens auf dem Drehteil (obere Hälfte bis zur Achse), Drehwinkel",
         "2  Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite",
         "3  Strahlachse über der Unterseite (Messschieber-Tiefenmaß von unten bis Ring-Mitte) – gerechnet sind 11,4",
     ]

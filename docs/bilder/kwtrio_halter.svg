@@ -10,6 +10,7 @@
 <rect x="149.75" y="213.10000000000002" width="40.5" height="49.0" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
 <rect x="149.75" y="426.0" width="40.5" height="41.800000000000004" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
 <path d="M100.25,430.0 L100.25,327.85 A69.75,69.75 0 0 1 239.75,327.85 L239.75,430.0 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
+<path d="M100.25,327.85 A69.75,69.75 0 0 1 239.75,327.85 Z" fill="#cfd8e3" stroke="#333" stroke-width="1.6"/>
 <circle cx="170.0" cy="327.85" r="54.0" fill="#d0d0d0" stroke="#333" stroke-width="1.4"/>
 <circle cx="170.0" cy="327.85" r="40.5" fill="#d9b44a" stroke="#333"/>
 <line x1="143.0" y1="351.25" x2="197.0" y2="304.45000000000005" stroke="#d62728" stroke-width="2"/>
@@ -31,8 +32,8 @@
 <rect x="521.84" y="426.0" width="40.5" height="41.800000000000004" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
 <rect x="608.375" y="426.0" width="51.300000000000004" height="41.800000000000004" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
 <rect x="480.8" y="258.1" width="204.29999999999998" height="171.9" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
-<rect x="627.5" y="258.1" width="57.6" height="171.9" fill="#cfd8e3" stroke="#333" stroke-width="1.6"/>
-<text x="656.3" y="378.925" text-anchor="middle" font-size="12">drehbar</text>
+<rect x="627.5" y="258.1" width="57.6" height="69.75" fill="#cfd8e3" stroke="#333" stroke-width="1.6"/>
+<text x="656.3" y="297.975" text-anchor="middle" font-size="12">drehbar</text>
 <rect x="470.0" y="273.85" width="12.799999999999999" height="108.0" fill="#d0d0d0" stroke="#333" stroke-width="1.4"/>
 <line x1="416.0" y1="327.85" x2="739.0999999999999" y2="327.85" stroke="#555" stroke-dasharray="8,3,2,3"/>
 <line x1="362.0" y1="327.85" x2="452.0" y2="327.85" stroke="#d62728" stroke-width="3"/>
@@ -47,7 +48,7 @@
 <text x="470.0" y="265.85" font-size="12" text-anchor="middle">1,2</text>
 <line x1="676.55" y1="213.10000000000002" x2="706.55" y2="213.10000000000002" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="702.55" y1="258.1" x2="702.55" y2="213.10000000000002" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="710.55" y="240.60000000000002" text-anchor="start">Hebel ?</text>
-<line x1="627.5" y1="274.1" x2="685.1" y2="274.1" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="656.3" y="292.1" text-anchor="middle">6,4</text>
+<line x1="627.5" y1="341.85" x2="685.1" y2="341.85" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="656.3" y="359.85" text-anchor="middle">6,4</text>
 <line x1="511.625" y1="224.8" x2="481.625" y2="224.8" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="485.625" y1="258.1" x2="485.625" y2="224.8" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="477.625" y="246.45000000000002" text-anchor="end">3,7 ?</text>
 <line x1="659.675" y1="467.8" x2="689.675" y2="467.8" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
@@ -73,7 +74,7 @@
 <text x="820.0" y="222.25" font-size="12">Wand 1,5</text>
 <text x="811.0" y="304.0" font-size="12" text-anchor="end">Optik</text>
 <text x="20" y="700" font-size="13" font-weight="bold">Für den Halter am Reiter fehlen noch:</text>
-<text x="20" y="722" font-size="13" >1  Höhe des Hebelzapfens auf dem Drehteil, Drehwinkel des Drehteils</text>
+<text x="20" y="722" font-size="13" >1  Höhe des Hebelzapfens auf dem Drehteil (obere Hälfte bis zur Achse), Drehwinkel</text>
 <text x="20" y="744" font-size="13" >2  Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite</text>
 <text x="20" y="766" font-size="13" >3  Strahlachse über der Unterseite (Messschieber-Tiefenmaß von unten bis Ring-Mitte) – gerechnet sind 11,4</text>
 </svg>
