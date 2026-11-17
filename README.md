@@ -82,6 +82,7 @@ Die Werte stehen in [cad/masse.toml](cad/masse.toml). Nach einer Änderung neu b
 uv run cad/bauen.py 2>&1 | cat      # Modelle (STL, STEP, Bilder)
 druck/projekt.sh                    # Projektdateien für Bambu Studio (ohne G-Code)
 uv run docs/bilder/skizzen.py 2>&1 | cat   # Skizzen (Querschnitt, Laser)
+uv run cad/kwtrio_halter.py 2>&1 | cat     # Laserhalter KW-triO: STEP und Zeichnung
 ```
 
 `bauen.py` prüft die Maßkette und bricht mit einer Meldung ab, wenn z. B. die Zunge zu dünn würde.
@@ -136,8 +137,8 @@ Sie soll ohne Druck hineinfallen und sich entlang der Schiene leicht schieben la
 
 | Ordner | Inhalt |
 |---|---|
-| [cad/](cad/) | `masse.toml` (alle Maße), `bauen.py` (CadQuery-Modell) |
-| [modelle/](modelle/) | STL (in Drucklage) und STEP |
+| [cad/](cad/) | `masse.toml` (alle Maße), `bauen.py` (CadQuery-Modell), `kwtrio_halter.py` (Laserhalter aus dem KW-triO: Modell und Zeichnung) |
+| [modelle/](modelle/) | STL (in Drucklage) und STEP, dazu `kwtrio_halter.step` |
 | [druck/](druck/) | Projektdateien (3MF, ohne G-Code), `projekt.sh` baut sie, `platten.py` (je Modell eine Platte, Objekteinstellungen), `profile_bauen.py` und `profil/` (ausgeschriebene Systemprofile für die Kommandozeile), `probeslice.py` (Kontrolle) |
 | [docs/](docs/) | Laser-Konzept, Bilder, Fotos der Maschine und der Messungen; `bilder/skizzen.py` zeichnet die Skizzen |
 

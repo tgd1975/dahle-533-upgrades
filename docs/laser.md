@@ -52,7 +52,9 @@ entlang der Schnittkante – dieselbe Lage wie im Konzept, nur niedriger.
 | Zinkhalter | Druckgussblock mit zylindrischer Aufnahme für das Modul; vorderer Ring mit seitlichem Zapfen (Hebel zum Drehen der Linie); Befestigung am Blechrahmen mit Schraube und Druckfeder, dazu eine Madenschraube mit Innensechskant zum Kippen | ganzer Block wird am Reiter angeschraubt; Drehen und Kippen wie im KW-triO, mit Stellschrauben im gedruckten Teil |
 | Taster und Kontakte | roter Drucktaster, Batteriefedern für 2 × AAA (3 V), angelötet | Batteriefach im gedruckten Teil mit diesen Federn und dem Taster – oder ein gekaufter Batteriehalter 2 × AAA mit Schalter |
 
-![Zinkhalter des KW-triO-Lasers in drei Ansichten](bilder/kwtrio_halter.svg)
+![Zinkhalter des KW-triO-Lasers in vier Ansichten](bilder/kwtrio_halter.svg)
+
+Modell und Zeichnung erzeugt [cad/kwtrio_halter.py](../cad/kwtrio_halter.py) aus einer Maßtabelle; das STEP-Modell [modelle/kwtrio_halter.step](../modelle/kwtrio_halter.step) dient später als Aussparung im Reiter.
 
 ![Schraube, Druckfeder und Taster des KW-triO-Lasers](bilder/kwtrio_kleinteile.svg)
 
