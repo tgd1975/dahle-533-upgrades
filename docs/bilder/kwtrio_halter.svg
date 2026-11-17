@@ -7,70 +7,77 @@
 </defs>
 <text x="20" y="30" font-size="16" font-weight="bold">Zinkhalter des Lasers aus dem KW-triO 13036</text>
 <text x="20" y="52" font-size="13" fill="#555">Maße in mm, Maßstab 7 : 1, Projektionsmethode 3 (ISO 5456-2), Hauptansicht = Seitenansicht.</text>
-<text x="20" y="72" font-size="13" fill="#555">Blau = drehbares Teil. „?“ = nicht gemessen oder Zuordnung unsicher, „ca.“ = aus dem Foto geschätzt.</text>
-<text x="250.0" y="140.09999999999997" text-anchor="middle" font-weight="bold">Ansicht von vorn (Laser)</text>
-<rect x="232.5" y="174.09999999999997" width="35.0" height="51.800000000000004" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<text x="20" y="72" font-size="13" fill="#555">Blau = Drehrohr mit Laser und Hebel. „?“ = nicht gemessen oder Zuordnung unsicher, „ca.“ = aus dem Foto geschätzt.</text>
+<text x="250.0" y="129.95" text-anchor="middle" font-weight="bold">Ansicht von vorn (Laser)</text>
+<rect x="232.5" y="163.95" width="35.0" height="61.60000000000001" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
 <rect x="234.25" y="180.4" width="31.5" height="32.9" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
 <rect x="230.05" y="338.0" width="39.9" height="31.400000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<path d="M195.75,340.0 L195.75,260.54999999999995 A54.25,54.25 0 0 1 304.25,260.54999999999995 L304.25,340.0 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<circle cx="250.0" cy="260.54999999999995" r="42.0" fill="#d6d6d6" stroke="#333" stroke-width="1.3"/>
-<circle cx="250.0" cy="260.54999999999995" r="31.5" fill="#d9b44a" stroke="#333"/>
-<line x1="231.8" y1="275.95" x2="268.2" y2="245.14999999999998" stroke="#d62728" stroke-width="2"/>
-<line x1="174.75" y1="260.54999999999995" x2="325.25" y2="260.54999999999995" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
-<line x1="250.0" y1="383.4" x2="250.0" y2="160.09999999999997" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
+<path d="M195.75,340.0 L195.75,260.2 L196.1,260.2 A53.900000000000006,53.900000000000006 0 0 1 303.9,260.2 L304.25,260.2 L304.25,340.0 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<line x1="195.75" y1="260.2" x2="208.0" y2="260.2" stroke="#333" stroke-width="1.3"/>
+<line x1="304.25" y1="260.2" x2="292.0" y2="260.2" stroke="#333" stroke-width="1.3"/>
+<circle cx="250.0" cy="260.2" r="42.0" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<circle cx="250.0" cy="260.2" r="31.5" fill="#d9b44a" stroke="#333"/>
+<line x1="231.8" y1="275.6" x2="268.2" y2="244.79999999999998" stroke="#d62728" stroke-width="2"/>
+<line x1="174.75" y1="260.2" x2="325.25" y2="260.2" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
+<line x1="250.0" y1="383.4" x2="250.0" y2="149.95" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
 <line x1="195.75" y1="340.0" x2="195.75" y2="399.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="304.25" y1="340.0" x2="304.25" y2="399.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="195.75" y1="395.4" x2="304.25" y2="395.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="250.0" y="413.4" text-anchor="middle">15,5</text>
 <line x1="250.0" y1="206.29999999999998" x2="169.75" y2="206.29999999999998" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="173.75" y1="340.0" x2="173.75" y2="206.29999999999998" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="165.75" y="278.15" text-anchor="end">19,1</text>
-<line x1="195.75" y1="260.54999999999995" x2="121.75" y2="260.54999999999995" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="125.75" y1="340.0" x2="125.75" y2="260.54999999999995" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="117.75" y="305.275" text-anchor="end">11,4 ?</text>
-<text x="117.75" y="322.275" text-anchor="end" font-size="11" fill="#555">Strahlachse,</text>
-<text x="117.75" y="336.275" text-anchor="end" font-size="11" fill="#555">gerechnet</text>
-<text x="312.25" y="215.04999999999998" font-size="12">Ring Ø12,0</text>
-<text x="537.85" y="140.09999999999997" text-anchor="middle" font-weight="bold">Seitenansicht (Hauptansicht)</text>
-<rect x="482.375" y="180.4" width="31.5" height="32.9" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<rect x="560.075" y="174.09999999999997" width="35.0" height="51.800000000000004" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
-<rect x="485.0" y="338.0" width="39.9" height="31.400000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<rect x="555.0" y="338.0" width="31.5" height="31.400000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<rect x="537.85" y="218.89999999999998" width="79.45" height="41.64999999999999" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
-<path d="M458.4,340.0 L458.4,206.29999999999998 L537.85,206.29999999999998 L537.85,260.54999999999995 L617.3,260.54999999999995 L617.3,340.0 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<rect x="450.0" y="218.54999999999998" width="8.4" height="84.0" fill="#d6d6d6" stroke="#333" stroke-width="1.3"/>
-<line x1="440.0" y1="260.54999999999995" x2="627.3" y2="260.54999999999995" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
-<line x1="410.0" y1="260.54999999999995" x2="446.0" y2="260.54999999999995" stroke="#d62728" stroke-width="3"/>
-<text x="408.0" y="252.54999999999995" text-anchor="end" font-size="12" fill="#d62728">Strahl</text>
-<text x="577.575" y="244.725" text-anchor="middle" font-size="12">drehbar</text>
+<line x1="195.75" y1="260.2" x2="121.75" y2="260.2" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="125.75" y1="340.0" x2="125.75" y2="260.2" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="117.75" y="305.1" text-anchor="end">11,4</text>
+<text x="117.75" y="322.1" text-anchor="end" font-size="11" fill="#555">Strahlachse,</text>
+<text x="117.75" y="336.1" text-anchor="end" font-size="11" fill="#555">gemessen</text>
+<text x="312.25" y="214.70000000000002" font-size="12">Halbbogen (fest)</text>
+<text x="312.25" y="278.2" font-size="12">Drehrohr Ø12,0</text>
+<text x="537.85" y="129.95" text-anchor="middle" font-weight="bold">Seitenansicht (Hauptansicht)</text>
+<rect x="497.6" y="180.4" width="31.5" height="32.9" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<rect x="575.3" y="163.95" width="35.0" height="61.60000000000001" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<rect x="479.40000000000003" y="338.0" width="39.9" height="31.400000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<rect x="565.5" y="338.0" width="31.5" height="31.400000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<rect x="568.3" y="218.54999999999998" width="49.0" height="41.650000000000006" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<path d="M458.4,340.0 L458.4,206.29999999999998 L568.3,206.29999999999998 L568.3,260.2 L617.3,260.2 L617.3,340.0 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<rect x="450.0" y="218.20000000000002" width="8.4" height="84.0" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<line x1="458.4" y1="260.2" x2="568.3" y2="260.2" stroke="#333" stroke-width="1.3"/>
+<text x="513.35" y="238.25" text-anchor="middle" font-size="11">Halbbogen</text>
+<line x1="440.0" y1="260.2" x2="627.3" y2="260.2" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
+<line x1="410.0" y1="260.2" x2="446.0" y2="260.2" stroke="#d62728" stroke-width="3"/>
+<text x="408.0" y="252.2" text-anchor="end" font-size="12" fill="#d62728">Strahl</text>
+<text x="592.8" y="243.375" text-anchor="middle" font-size="10">dreh-</text>
+<text x="592.8" y="254.375" text-anchor="middle" font-size="10">bar</text>
 <line x1="458.4" y1="340.0" x2="458.4" y2="435.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="617.3" y1="340.0" x2="617.3" y2="435.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="450.0" y1="302.55" x2="450.0" y2="435.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="524.9" y1="389.4" x2="555.0" y2="389.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="539.95" y="383.4" text-anchor="middle">4,3</text>
+<line x1="450.0" y1="302.2" x2="450.0" y2="435.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="458.4" y1="389.4" x2="479.40000000000003" y2="389.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="468.9" y="383.4" text-anchor="middle">3,0</text>
+<line x1="597.0" y1="389.4" x2="617.3" y2="389.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="607.15" y="383.4" text-anchor="middle">2,9</text>
 <line x1="458.4" y1="401.4" x2="617.3" y2="401.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="537.8499999999999" y="419.4" text-anchor="middle">22,7</text>
 <line x1="450.0" y1="431.4" x2="617.3" y2="431.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="533.65" y="449.4" text-anchor="middle">24,0 gesamt</text>
-<text x="446.0" y="212.54999999999998" text-anchor="end" font-size="12">1,2</text>
-<line x1="537.85" y1="206.29999999999998" x2="537.85" y2="158.09999999999997" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="537.85" y1="162.09999999999997" x2="617.3" y2="162.09999999999997" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="577.575" y="156.09999999999997" text-anchor="middle">ca. 11,3</text>
-<line x1="595.075" y1="174.09999999999997" x2="647.3" y2="174.09999999999997" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="617.3" y1="218.89999999999998" x2="647.3" y2="218.89999999999998" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="643.3" y1="218.89999999999998" x2="643.3" y2="174.09999999999997" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="651.3" y="201.49999999999997" text-anchor="start">6,4 ?</text>
+<text x="446.0" y="212.20000000000002" text-anchor="end" font-size="12">1,2</text>
+<line x1="568.3" y1="206.29999999999998" x2="568.3" y2="147.95" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="568.3" y1="151.95" x2="617.3" y2="151.95" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="592.8" y="145.95" text-anchor="middle">7,0</text>
+<line x1="610.3" y1="163.95" x2="647.3" y2="163.95" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="617.3" y1="218.54999999999998" x2="647.3" y2="218.54999999999998" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="643.3" y1="218.54999999999998" x2="643.3" y2="163.95" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="651.3" y="196.25" text-anchor="start">7,8</text>
 <line x1="617.3" y1="340.0" x2="647.3" y2="340.0" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="643.3" y1="369.4" x2="643.3" y2="340.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="651.3" y="359.7" text-anchor="start">4,2</text>
 <line x1="617.3" y1="369.4" x2="647.3" y2="369.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="468.375" y1="206.29999999999998" x2="468.375" y2="180.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="460.375" y="198.35" text-anchor="end">3,7</text>
-<text x="623.3" y="252.54999999999995" font-size="12">Kabel</text>
-<text x="850.0" y="140.09999999999997" text-anchor="middle" font-weight="bold">Ansicht von hinten (Hebel)</text>
+<line x1="483.6" y1="206.29999999999998" x2="483.6" y2="180.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="475.6" y="198.35" text-anchor="end">3,7</text>
+<text x="623.3" y="252.2" font-size="12">Kabel</text>
+<text x="850.0" y="129.95" text-anchor="middle" font-weight="bold">Ansicht von hinten (Hebel)</text>
 <rect x="834.25" y="180.4" width="31.5" height="32.9" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<path d="M904.25,260.54999999999995 A54.25,54.25 0 0 1 795.75,260.54999999999995 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<path d="M903.9,260.2 A53.900000000000006,53.900000000000006 0 0 1 796.1,260.2 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
 <rect x="834.25" y="338.0" width="31.5" height="31.400000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<rect x="795.75" y="260.54999999999995" width="108.5" height="79.45000000000002" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<rect x="832.5" y="174.09999999999997" width="35.0" height="51.800000000000004" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
-<circle cx="850.0" cy="260.54999999999995" r="41.65" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
-<circle cx="850.0" cy="260.54999999999995" r="31.5" fill="#d9b44a" stroke="#333"/>
-<circle cx="850.0" cy="260.54999999999995" r="11.200000000000001" fill="#333"/>
-<line x1="774.75" y1="260.54999999999995" x2="925.25" y2="260.54999999999995" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
-<line x1="850.0" y1="383.4" x2="850.0" y2="160.09999999999997" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
-<text x="912.25" y="215.39999999999998" font-size="12">Drehteil Ø11,9</text>
-<text x="912.25" y="282.54999999999995" font-size="12">Kabel</text>
-<text x="875.5" y="188.09999999999997" font-size="12">Hebelrohr Ø ca. 5,0</text>
+<rect x="795.75" y="260.2" width="108.5" height="79.8" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<rect x="832.5" y="163.95" width="35.0" height="61.60000000000001" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<circle cx="850.0" cy="260.2" r="41.65" fill="#cfd8e3" stroke="#333" stroke-width="1.5"/>
+<circle cx="850.0" cy="260.2" r="31.5" fill="#d9b44a" stroke="#333"/>
+<circle cx="850.0" cy="260.2" r="11.200000000000001" fill="#333"/>
+<line x1="774.75" y1="260.2" x2="925.25" y2="260.2" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
+<line x1="850.0" y1="383.4" x2="850.0" y2="149.95" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
+<text x="912.25" y="215.04999999999998" font-size="12">Drehrohr Ø11,9</text>
+<text x="912.25" y="282.2" font-size="12">Kabel</text>
+<text x="875.5" y="177.95" font-size="12">Hebelrohr Ø ca. 5,0</text>
 <line x1="795.75" y1="340.0" x2="795.75" y2="399.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="904.25" y1="340.0" x2="904.25" y2="399.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="795.75" y1="395.4" x2="904.25" y2="395.4" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="850.0" y="413.4" text-anchor="middle">15,5</text>
@@ -78,14 +85,14 @@
 <rect x="450.0" y="513.65" width="8.4" height="84.0" fill="#d6d6d6" stroke="#333" stroke-width="1.3"/>
 <rect x="458.4" y="501.4" width="158.9" height="108.5" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
 <rect x="468.9" y="511.9" width="137.9" height="87.5" fill="#a8a8a8" stroke="#333"/>
-<circle cx="504.95" cy="555.65" r="19.95" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<circle cx="504.95" cy="555.65" r="9.1" fill="#444"/>
-<line x1="504.95" y1="577.6" x2="504.95" y2="631.9" stroke="#555" stroke-width="0.8"/>
-<text x="504.95" y="643.9" text-anchor="middle" font-size="12">Ø5,7 Steckzapfen (Blechloch)</text>
-<circle cx="570.75" cy="555.65" r="15.75" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
-<circle cx="570.75" cy="555.65" r="9.1" fill="#444"/>
-<line x1="570.75" y1="573.4" x2="570.75" y2="653.9" stroke="#555" stroke-width="0.8"/>
-<text x="570.75" y="665.9" text-anchor="middle" font-size="12">Ø4,5 M3, Schraube mit Feder</text>
+<circle cx="499.35" cy="555.65" r="19.95" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<circle cx="499.35" cy="555.65" r="9.1" fill="#444"/>
+<line x1="499.35" y1="577.6" x2="499.35" y2="631.9" stroke="#555" stroke-width="0.8"/>
+<text x="499.35" y="643.9" text-anchor="middle" font-size="12">Ø5,7 Steckzapfen (Blechloch)</text>
+<circle cx="581.25" cy="555.65" r="15.75" fill="#e4e4e4" stroke="#333" stroke-width="1.5"/>
+<circle cx="581.25" cy="555.65" r="9.1" fill="#444"/>
+<line x1="581.25" y1="573.4" x2="581.25" y2="653.9" stroke="#555" stroke-width="0.8"/>
+<text x="581.25" y="665.9" text-anchor="middle" font-size="12">Ø4,5 M3, Schraube mit Feder</text>
 <line x1="440.0" y1="555.65" x2="627.3" y2="555.65" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
 <line x1="617.3" y1="501.4" x2="647.3" y2="501.4" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="617.3" y1="609.9" x2="647.3" y2="609.9" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
@@ -98,7 +105,7 @@
 <line x1="936.0" y1="729.9" x2="1048.0" y2="729.9" stroke="#555" stroke-width="0.8" stroke-dasharray="10,3,2,3"/>
 <text x="990.0" y="765.9" text-anchor="middle" font-size="11" fill="#555">Projektionsmethode 3</text>
 <text x="20" y="709.9" font-size="13" font-weight="bold">Für den Halter am Reiter fehlen noch:</text>
-<text x="20" y="731.9" font-size="13" >1  Länge des Drehteils (geschätzt halbe Körperlänge) und Höhe des Hebelrohrs über dem Drehteil (6,4 ?)</text>
-<text x="20" y="753.9" font-size="13" >2  Ø der beiden oberen Zapfen; Lage der Zapfen entlang der Achse (Mitte bis Stirnseite)</text>
-<text x="20" y="775.9" font-size="13" >3  Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) – gerechnet 11,4</text>
+<text x="20" y="731.9" font-size="13" >1  Ø der beiden oberen Zapfen (Madenschraube, Hebelrohr)</text>
+<text x="20" y="753.9" font-size="13" >2  Lage der oberen Zapfen entlang der Achse</text>
+<text x="20" y="775.9" font-size="13" >3  Zapfen unten: Lücke gemessen 4,3, aus den Randabständen 3,0 und 2,9 folgen 6,6 – bitte nachmessen</text>
 </svg>

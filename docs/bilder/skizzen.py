@@ -201,16 +201,19 @@ HALTER = {
     "ring_v": 1.2,         # Ring vorne steht vor
     "ring_d": 12.0,        # Ring vorne
     "dreh_d": 11.9,        # Drehteil hinten (Zylinder)
-    "dreh_l": 11.35,       # Drehteil reicht von hinten bis zur Mitte der Länge – geschätzt
+    "dreh_l": 7.0,         # freiliegender Teil des Drehrohrs hinten
+    "achse": 11.4,         # Strahlachse über der Unterseite, gemessen
     "wand": 1.5,           # Wand der offenen Unterseite
     "zu_vorn_d": 5.7,      # Zapfen unten vorne, steckt im Loch des Blechs
     "zu_hint_d": 4.5,      # Zapfen unten hinten, Gewinde für die M3-Schraube mit Feder
     "zu_h": 4.2,           # Zapfen unten stehen vor
-    "luecke": 4.3,         # Lücke zwischen den Zapfen unten
+    "zu_vorn_rand": 3.0,   # Zapfen unten vorne: Abstand zur Vorderkante
+    "zu_hint_rand": 2.9,   # Zapfen unten hinten: Abstand zur Hinterkante
+    "luecke": 4.3,         # gemessene Lücke zwischen den Zapfen – widerspricht den Randabständen (ergeben 6,6)
     "zo_kurz_d": 4.5,      # Zapfen oben vorne, Innensechskant – Ø geschätzt
     "zo_kurz_h": 3.7,      # über dem Scheitel
     "hebel_d": 5.0,        # Hebelrohr auf dem Drehteil – Ø geschätzt
-    "hebel_h": 6.4,        # über dem Drehteil – Zuordnung unsicher
+    "hebel_h": 7.8,        # Hebelrohr über dem Drehrohr
     "modul_d": 9.0,        # Messinghülse des Lasermoduls – geschätzt
 }
 
@@ -220,13 +223,14 @@ def halter() -> str:
     s = 7.0
     b, hh, l = h["breite"], h["hoehe"], h["laenge"]
     rb = b / 2
-    za = hh - rb                    # Strahlachse über der Unterseite: Bogen konzentrisch zum Drehteil
+    za = h["achse"]                 # Strahlachse über der Unterseite
+    ra = hh - za                    # Außenradius des oberen Halbbogens
     rd = h["dreh_d"] / 2
     y_dreh = l - h["dreh_l"]        # Beginn des Drehteils
     dz_top = za + rd                # Oberkante Drehteil
     # Zapfen: unten mittig verteilt, oben geschätzt
-    abst = h["zu_vorn_d"] / 2 + h["luecke"] + h["zu_hint_d"] / 2
-    yu_v, yu_h = l / 2 - abst / 2, l / 2 + abst / 2
+    yu_v = h["zu_vorn_rand"] + h["zu_vorn_d"] / 2
+    yu_h = l - h["zu_hint_rand"] - h["zu_hint_d"] / 2
     yo_k, yo_h = y_dreh / 2, y_dreh + h["dreh_l"] / 2
     fest = f'fill="#e4e4e4" stroke="{LINIE}" stroke-width="1.5"'
     dreh = f'fill="#cfd8e3" stroke="{LINIE}" stroke-width="1.5"'
@@ -235,7 +239,7 @@ def halter() -> str:
     o = kopf(1080, 790, "Zinkhalter des KW-triO-Lasers, Ansichten nach Projektionsmethode 3")
     o.append('<text x="20" y="30" font-size="16" font-weight="bold">Zinkhalter des Lasers aus dem KW-triO 13036</text>')
     o.append(f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, Maßstab 7 : 1, Projektionsmethode 3 (ISO 5456-2), Hauptansicht = Seitenansicht.</text>')
-    o.append(f'<text x="20" y="72" font-size="13" fill="{MASS}">Blau = drehbares Teil. „?“ = nicht gemessen oder Zuordnung unsicher, „ca.“ = aus dem Foto geschätzt.</text>')
+    o.append(f'<text x="20" y="72" font-size="13" fill="{MASS}">Blau = Drehrohr mit Laser und Hebel. „?“ = nicht gemessen oder Zuordnung unsicher, „ca.“ = aus dem Foto geschätzt.</text>')
 
     # ---------- A: Vorderansicht (Laser) ----------
     ax, az = 250.0, 340.0           # Mitte x, Unterseite z=0
@@ -245,8 +249,10 @@ def halter() -> str:
     o.append(f'<rect x="{AX(-h["hebel_d"]/2)}" y="{AZ(dz_top + h["hebel_h"])}" width="{h["hebel_d"]*s}" height="{(h["hebel_h"] + 1)*s}" {dreh}/>')
     o.append(f'<rect x="{AX(-h["zo_kurz_d"]/2)}" y="{AZ(hh + h["zo_kurz_h"])}" width="{h["zo_kurz_d"]*s}" height="{(h["zo_kurz_h"] + 1)*s}" {fest}/>')
     o.append(f'<rect x="{AX(-h["zu_vorn_d"]/2)}" y="{AZ(0) - 2}" width="{h["zu_vorn_d"]*s}" height="{h["zu_h"]*s + 2}" {fest}/>')
-    o.append(f'<path d="M{AX(-rb)},{AZ(0)} L{AX(-rb)},{AZ(za)} A{rb*s},{rb*s} 0 0 1 {AX(rb)},{AZ(za)} L{AX(rb)},{AZ(0)} Z" {fest}/>')
-    o.append(f'<circle cx="{AX(0)}" cy="{AZ(za)}" r="{h["ring_d"]/2*s}" fill="#d6d6d6" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<path d="M{AX(-rb)},{AZ(0)} L{AX(-rb)},{AZ(za)} L{AX(-ra)},{AZ(za)} A{ra*s},{ra*s} 0 0 1 {AX(ra)},{AZ(za)} L{AX(rb)},{AZ(za)} L{AX(rb)},{AZ(0)} Z" {fest}/>')
+    for sg in (-1, 1):
+        o.append(f'<line x1="{AX(sg*rb)}" y1="{AZ(za)}" x2="{AX(sg*h["ring_d"]/2)}" y2="{AZ(za)}" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<circle cx="{AX(0)}" cy="{AZ(za)}" r="{h["ring_d"]/2*s}" {dreh}/>')
     o.append(f'<circle cx="{AX(0)}" cy="{AZ(za)}" r="{h["modul_d"]/2*s}" fill="#d9b44a" stroke="{LINIE}"/>')
     o.append(f'<line x1="{AX(-2.6)}" y1="{AZ(za - 2.2)}" x2="{AX(2.6)}" y2="{AZ(za + 2.2)}" stroke="{ROT}" stroke-width="2"/>')
     o.append(f'<line x1="{AX(-rb - 3)}" y1="{AZ(za)}" x2="{AX(rb + 3)}" y2="{AZ(za)}" {mitte}/>')
@@ -259,10 +265,11 @@ def halter() -> str:
     o.append(mass_v(xl, AZ(0), AZ(hh), zahl(hh), links=True))
     xl2 = xl - 48
     o.append(hilfslinie(AX(-rb), AZ(za), xl2 - 4, AZ(za)))
-    o.append(mass_v(xl2, AZ(0), AZ(za), f"{zahl(za)} ?", links=True))
+    o.append(mass_v(xl2, AZ(0), AZ(za), zahl(za), links=True))
     o.append(f'<text x="{xl2 - 8}" y="{AZ(za/2) + 22}" text-anchor="end" font-size="11" fill="{MASS}">Strahlachse,</text>')
-    o.append(f'<text x="{xl2 - 8}" y="{AZ(za/2) + 36}" text-anchor="end" font-size="11" fill="{MASS}">gerechnet</text>')
-    o.append(f'<text x="{AX(rb) + 8}" y="{AZ(za + 6.5)}" font-size="12">Ring Ø{zahl(h["ring_d"])}</text>')
+    o.append(f'<text x="{xl2 - 8}" y="{AZ(za/2) + 36}" text-anchor="end" font-size="11" fill="{MASS}">gemessen</text>')
+    o.append(f'<text x="{AX(rb) + 8}" y="{AZ(za + 6.5)}" font-size="12">Halbbogen (fest)</text>')
+    o.append(f'<text x="{AX(rb) + 8}" y="{AZ(za) + 18}" font-size="12">Drehrohr Ø{zahl(h["ring_d"])}</text>')
 
     # ---------- C: Ansicht von links, rechts neben A ----------
     cx0, cz = 450.0, az
@@ -275,26 +282,30 @@ def halter() -> str:
         o.append(f'<rect x="{CY(yy) - d/2*s}" y="{CZ(0) - 2}" width="{d*s}" height="{h["zu_h"]*s + 2}" {fest}/>')
     o.append(f'<rect x="{CY(y_dreh)}" y="{CZ(dz_top)}" width="{h["dreh_l"]*s}" height="{(dz_top - za)*s}" {dreh}/>')
     o.append(f'<path d="M{CY(0)},{CZ(0)} L{CY(0)},{CZ(hh)} L{CY(y_dreh)},{CZ(hh)} L{CY(y_dreh)},{CZ(za)} L{CY(l)},{CZ(za)} L{CY(l)},{CZ(0)} Z" {fest}/>')
-    o.append(f'<rect x="{CY(-h["ring_v"])}" y="{CZ(za + h["ring_d"]/2)}" width="{h["ring_v"]*s}" height="{h["ring_d"]*s}" fill="#d6d6d6" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<rect x="{CY(-h["ring_v"])}" y="{CZ(za + h["ring_d"]/2)}" width="{h["ring_v"]*s}" height="{h["ring_d"]*s}" {dreh}/>')
+    o.append(f'<line x1="{CY(0)}" y1="{CZ(za)}" x2="{CY(y_dreh)}" y2="{CZ(za)}" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<text x="{CY(y_dreh/2)}" y="{CZ((hh + za)/2) + 5}" text-anchor="middle" font-size="11">Halbbogen</text>')
     o.append(f'<line x1="{CY(-h["ring_v"]) - 10}" y1="{CZ(za)}" x2="{CY(l) + 10}" y2="{CZ(za)}" {mitte}/>')
     o.append(f'<line x1="{CY(-h["ring_v"]) - 40}" y1="{CZ(za)}" x2="{CY(-h["ring_v"]) - 4}" y2="{CZ(za)}" stroke="{ROT}" stroke-width="3"/>')
     o.append(f'<text x="{CY(-h["ring_v"]) - 42}" y="{CZ(za) - 8}" text-anchor="end" font-size="12" fill="{ROT}">Strahl</text>')
-    o.append(f'<text x="{CY(y_dreh + h["dreh_l"]/2)}" y="{CZ((dz_top + za)/2) + 5}" text-anchor="middle" font-size="12">drehbar</text>')
+    o.append(f'<text x="{CY(y_dreh + h["dreh_l"]/2)}" y="{CZ((dz_top + za)/2) + 4}" text-anchor="middle" font-size="10">dreh-</text>')
+    o.append(f'<text x="{CY(y_dreh + h["dreh_l"]/2)}" y="{CZ((dz_top + za)/2) + 15}" text-anchor="middle" font-size="10">bar</text>')
     # Maße C
     y1 = CZ(-h["zu_h"]) + 26
     o.append(hilfslinie(CY(0), CZ(0), CY(0), y1 + 40)); o.append(hilfslinie(CY(l), CZ(0), CY(l), y1 + 40))
     o.append(hilfslinie(CY(-h["ring_v"]), CZ(za - h["ring_d"]/2), CY(-h["ring_v"]), y1 + 40))
-    o.append(mass_h(CY(yu_v) + h["zu_vorn_d"]/2*s, CY(yu_h) - h["zu_hint_d"]/2*s, y1 - 6, zahl(h["luecke"])))
+    o.append(mass_h(CY(0), CY(yu_v) - h["zu_vorn_d"]/2*s, y1 - 6, zahl(h["zu_vorn_rand"])))
+    o.append(mass_h(CY(yu_h) + h["zu_hint_d"]/2*s, CY(l), y1 - 6, zahl(h["zu_hint_rand"])))
     o.append(mass_h(CY(0), CY(l), y1 + 6, zahl(l), oben=False))
     o.append(mass_h(CY(-h["ring_v"]), CY(l), y1 + 36, "24,0 gesamt", oben=False))
     o.append(f'<text x="{CY(-h["ring_v"]) - 4}" y="{CZ(za + h["ring_d"]/2) - 6}" text-anchor="end" font-size="12">{zahl(h["ring_v"])}</text>')
     yt = CZ(dz_top + h["hebel_h"]) - 12
     o.append(hilfslinie(CY(y_dreh), CZ(hh), CY(y_dreh), yt - 4))
-    o.append(mass_h(CY(y_dreh), CY(l), yt, f"ca. {zahl(h['dreh_l'])}"))
+    o.append(mass_h(CY(y_dreh), CY(l), yt, zahl(h["dreh_l"])))
     xr = CY(l) + 26
     o.append(hilfslinie(CY(yo_h) + h["hebel_d"]/2*s, CZ(dz_top + h["hebel_h"]), xr + 4, CZ(dz_top + h["hebel_h"])))
     o.append(hilfslinie(CY(l), CZ(dz_top), xr + 4, CZ(dz_top)))
-    o.append(mass_v(xr, CZ(dz_top), CZ(dz_top + h["hebel_h"]), f"{zahl(h['hebel_h'])} ?"))
+    o.append(mass_v(xr, CZ(dz_top), CZ(dz_top + h["hebel_h"]), zahl(h["hebel_h"])))
     o.append(hilfslinie(CY(l), CZ(0), xr + 4, CZ(0)))
     o.append(mass_v(xr, CZ(-h["zu_h"]), CZ(0), zahl(h["zu_h"])))
     o.append(hilfslinie(CY(l), CZ(-h["zu_h"]), xr + 4, CZ(-h["zu_h"])))
@@ -308,7 +319,7 @@ def halter() -> str:
     def FZ(z): return fz - z * s
     o.append(f'<text x="{fx}" y="{FZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">Ansicht von hinten (Hebel)</text>')
     o.append(f'<rect x="{FX(h["zo_kurz_d"]/2)}" y="{FZ(hh + h["zo_kurz_h"])}" width="{h["zo_kurz_d"]*s}" height="{(h["zo_kurz_h"] + 1)*s}" {fest}/>')
-    o.append(f'<path d="M{FX(-rb)},{FZ(za)} A{rb*s},{rb*s} 0 0 1 {FX(rb)},{FZ(za)} Z" {fest}/>')
+    o.append(f'<path d="M{FX(-ra)},{FZ(za)} A{ra*s},{ra*s} 0 0 1 {FX(ra)},{FZ(za)} Z" {fest}/>')
     o.append(f'<rect x="{FX(h["zu_hint_d"]/2)}" y="{FZ(0) - 2}" width="{h["zu_hint_d"]*s}" height="{h["zu_h"]*s + 2}" {fest}/>')
     o.append(f'<rect x="{FX(rb)}" y="{FZ(za)}" width="{b*s}" height="{za*s}" {fest}/>')
     o.append(f'<rect x="{FX(h["hebel_d"]/2)}" y="{FZ(dz_top + h["hebel_h"])}" width="{h["hebel_d"]*s}" height="{(h["hebel_h"] + 1)*s}" {dreh}/>')
@@ -317,7 +328,7 @@ def halter() -> str:
     o.append(f'<circle cx="{FX(0)}" cy="{FZ(za)}" r="{1.6*s}" fill="#333"/>')
     o.append(f'<line x1="{FX(rb + 3)}" y1="{FZ(za)}" x2="{FX(-rb - 3)}" y2="{FZ(za)}" {mitte}/>')
     o.append(f'<line x1="{FX(0)}" y1="{FZ(-h["zu_h"] - 2)}" x2="{FX(0)}" y2="{FZ(dz_top + h["hebel_h"] + 2)}" {mitte}/>')
-    o.append(f'<text x="{FX(-rb) + 8}" y="{FZ(za + rd + 0.5)}" font-size="12">Drehteil Ø{zahl(h["dreh_d"])}</text>')
+    o.append(f'<text x="{FX(-rb) + 8}" y="{FZ(za + rd + 0.5)}" font-size="12">Drehrohr Ø{zahl(h["dreh_d"])}</text>')
     o.append(f'<text x="{FX(-rb) + 8}" y="{FZ(za) + 22}" font-size="12">Kabel</text>')
     o.append(f'<text x="{FX(-h["hebel_d"]/2) + 8}" y="{FZ(dz_top + h["hebel_h"]) + 14}" font-size="12">Hebelrohr Ø ca. {zahl(h["hebel_d"])}</text>')
     yf = FZ(-h["zu_h"]) + 26
@@ -356,9 +367,9 @@ def halter() -> str:
     # ---------- offen ----------
     fehl = [
         "Für den Halter am Reiter fehlen noch:",
-        "1  Länge des Drehteils (geschätzt halbe Körperlänge) und Höhe des Hebelrohrs über dem Drehteil (6,4 ?)",
-        "2  Ø der beiden oberen Zapfen; Lage der Zapfen entlang der Achse (Mitte bis Stirnseite)",
-        "3  Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) – gerechnet 11,4",
+        "1  Ø der beiden oberen Zapfen (Madenschraube, Hebelrohr)",
+        "2  Lage der oberen Zapfen entlang der Achse",
+        "3  Zapfen unten: Lücke gemessen 4,3, aus den Randabständen 3,0 und 2,9 folgen 6,6 – bitte nachmessen",
     ]
     for k, t in enumerate(fehl):
         o.append(f'<text x="20" y="{unten + k*22}" font-size="13" {"font-weight=\"bold\"" if k == 0 else ""}>{t}</text>')
