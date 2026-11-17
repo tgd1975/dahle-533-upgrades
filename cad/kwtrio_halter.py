@@ -31,7 +31,6 @@ HALTER = {
     "breite": 15.5,        # quer
     "hoehe": 19.1,         # Unterseite bis Scheitel des Halbbogens
     "laenge": 21.5,        # Körper (ohne Vorbau)
-    "gesamt": 24.0,        # Vorderkante Vorbau bis Hinterkante Drehrohr
     "achse": 11.4,         # Strahlachse über der Unterseite
     "rohr_d": 12.0,        # Drehrohr, überall gleich
     "rohr_v": 1.2,         # halbrunder Vorbau oben (und Drehrohr) steht vorne vor
@@ -90,7 +89,7 @@ def modell() -> tuple[cq.Workplane, cq.Workplane]:
     fest = fest.cut(sechskant)
 
     y_hebel = y_frei + h["rohr_frei"] / 2
-    y_ende = h["gesamt"] - h["rohr_v"]       # Hinterkante Drehrohr
+    y_ende = l                               # Drehrohr hinten bündig mit dem Block
     rohr = zyl_y(rr, -h["rohr_v"], y_ende)
     rohr = rohr.union(zyl_z(h["hebel_d"] / 2, y_hebel, za + rr - 1, za + rr + h["hebel_h"]))
     rohr = rohr.cut(zyl_z(h["sw"] / 0.866 / 2, y_hebel, za + rr - 0.5, za + rr + h["hebel_h"] + 1))
@@ -238,14 +237,14 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
         (unten, (0, 0, -1), (0, 1, 0)),
     ]
 
-    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="820" viewBox="0 0 1100 820" '
+    o = [f'<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="800" viewBox="0 0 1100 800" '
          f'font-family="sans-serif" font-size="14" fill="{TEXT}">',
          "<title>Zinkhalter des KW-triO-Lasers</title>",
          '<rect width="100%" height="100%" fill="white"/>', pfeil_defs(),
          '<text x="20" y="30" font-size="16" font-weight="bold">Zinkhalter des Lasers aus dem KW-triO 13036</text>',
          f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, Maßstab 7 : 1, Projektionsmethode 3 '
          f'(ISO 5456-2), Hauptansicht = Seitenansicht. Alle Ansichten aus einem 3D-Modell (cad/kwtrio_halter.py).</text>',
-         f'<text x="20" y="72" font-size="13" fill="{MASS}">Verdeckte Kanten gestrichelt. „?“ = geschätzt oder widersprüchlich – bitte nachmessen.</text>']
+         f'<text x="20" y="72" font-size="13" fill="{MASS}">Verdeckte Kanten gestrichelt.</text>']
     for ans, blick, rechts in ansichten:
         vis, hid = projektion(ganz, blick, rechts)
         o.append(pfade(ans, hid, verd))
@@ -267,7 +266,7 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
         o.append(mittellinie(unten, (yy, -3.5), (yy, 3.5)))
         o.append(mittellinie(seite, (yy, -h["zu_h"] - 1), (yy, h["tasche"] + 1)))
     zo_y = -h["rohr_v"] + h["zo_abst"] + h["zo_d"] / 2
-    y_ende = h["gesamt"] - h["rohr_v"]
+    y_ende = l
     for yy, top in ((zo_y, hh + h["zo_h"]), (yh, hebel_top)):
         o.append(mittellinie(seite, (yy, za + rr - 0.5), (yy, top + 1.2)))
 
@@ -294,9 +293,7 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
 
     # Maße Seitenansicht
     o.append(mass_h(seite, 0, l, -h["zu_h"], zahl(l), 40, ref_v=0))
-    o.append(mass_h(seite, -h["rohr_v"], y_ende, -h["zu_h"], f"{zahl(h['gesamt'])} gesamt", 70, ref_v=za - rr))
-    o.append(mass_h(seite, l, y_ende, za - rr, "", 12))
-    o.append(text(seite, y_ende, za - rr, f"{zahl(y_ende - l)} ?", dx=6, dy=17))
+    o.append(mass_h(seite, -h["rohr_v"], l, -h["zu_h"], f"{zahl(l + h['rohr_v'])} gesamt", 70, ref_v=za - rr))
     o.append(mass_h(seite, -h["rohr_v"], 0, za - rr, "", 12))
     o.append(text(seite, -h["rohr_v"], za - rr, zahl(h["rohr_v"]), "end", dx=-6, dy=17))
     o.append(mass_h(seite, 0, yu_v - h["zu_vorn_d"] / 2, -h["zu_h"], zahl(h["zu_vorn_rand"]), 16))
@@ -328,11 +325,6 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
              f'stroke-dasharray="10,3,2,3"/>')
     o.append(f'<text x="{px0 + 30}" y="{py0 + 36}" text-anchor="middle" font-size="11" fill="{MASS}">Projektionsmethode 3</text>')
 
-    offen = ["Bitte nachmessen (in der Zeichnung mit „?“):",
-             "1  Drehrohr steht hinten 1,3 über (24,0 gesamt minus 21,5 Körper minus 1,2 Vorbau)"]
-    for k, t in enumerate(offen):
-        gewicht = ' font-weight="bold"' if k == 0 else ""
-        o.append(f'<text x="20" y="{730 + k * 22}" font-size="13"{gewicht}>{t}</text>')
     o.append("</svg>")
     return "\n".join(o)
 
