@@ -30,9 +30,10 @@ ROOT = Path(__file__).resolve().parent.parent
 HALTER = {
     "breite": 15.5,        # quer
     "hoehe": 19.1,         # Unterseite bis Scheitel des Halbbogens
-    "laenge": 22.7,        # Körper
+    "laenge": 21.5,        # Körper (ohne Vorbau)
+    "gesamt": 24.0,        # Vorderkante Vorbau bis Hinterkante Drehrohr
     "achse": 11.4,         # Strahlachse über der Unterseite
-    "rohr_d": 12.0,        # Drehrohr (hinten gemessen 11,9)
+    "rohr_d": 12.0,        # Drehrohr, überall gleich
     "rohr_v": 1.2,         # halbrunder Vorbau oben (und Drehrohr) steht vorne vor
     "rohr_frei": 7.0,      # Drehrohr liegt hinten so lang frei
     "modul_d": 9.0,        # Messinghülse des Lasermoduls – geschätzt
@@ -43,10 +44,11 @@ HALTER = {
     "zu_hint_d": 4.5,      # Zapfen unten hinten: Gewinde für die M3-Schraube mit Feder
     "zu_hint_rand": 2.9,   # ... Abstand zur Hinterkante
     "zu_h": 4.2,           # Zapfen unten stehen unter der Unterseite vor
-    "zo_d": 4.5,           # Zapfen oben auf dem Halbbogen, Madenschraube – Ø geschätzt
-    "zo_y": 6.0,           # ... Lage ab Stirnseite – geschätzt
+    "zo_d": 6.4,           # Zapfen oben auf dem Halbbogen, innen Innensechskant für den Inbusschlüssel
+    "zo_abst": 4.2,        # ... Vorderkante Halbbogen (Vorbau) bis Zapfenrand
     "zo_h": 3.7,           # ... über dem Scheitel
-    "hebel_d": 5.0,        # Hebelrohr auf dem Drehrohr – Ø geschätzt
+    "hebel_d": 6.4,        # Hebelrohr auf dem Drehrohr, innen Bohrung für denselben Inbusschlüssel
+    "sw": 2.5,             # Innensechskant – Schlüsselweite geschätzt
     "hebel_h": 7.8,        # ... über dem Drehrohr
     "bohrung": 2.5,        # Bohrungen in den Zapfen (M3-Kern)
 }
@@ -79,14 +81,18 @@ def modell() -> tuple[cq.Workplane, cq.Workplane]:
         fest = fest.union(zyl_z(d / 2, y, -h["zu_h"], h["tasche"] + 0.01))
         fest = fest.cut(zyl_z(h["bohrung"] / 2, y, -h["zu_h"] - 1, h["tasche"] + 1))
     zo_top = h["hoehe"] + h["zo_h"]
-    fest = fest.union(zyl_z(h["zo_d"] / 2, h["zo_y"], za + rr, zo_top))
-    fest = fest.cut(zyl_z(h["bohrung"] / 2, h["zo_y"], za, zo_top + 1))
+    zo_y = -h["rohr_v"] + h["zo_abst"] + h["zo_d"] / 2
+    fest = fest.union(zyl_z(h["zo_d"] / 2, zo_y, za + rr, zo_top))
+    sechskant = (cq.Workplane("XY", origin=(0, zo_y, za + rr)).polygon(6, h["sw"] / 0.866)
+                 .extrude(zo_top - za - rr + 1))
+    fest = fest.cut(sechskant)
 
     y_hebel = y_frei + h["rohr_frei"] / 2
-    rohr = zyl_y(rr, -h["rohr_v"], l).cut(zyl_y(h["modul_d"] / 2, -h["rohr_v"] - 1, l + 1))
+    y_ende = h["gesamt"] - h["rohr_v"]       # Hinterkante Drehrohr
+    rohr = zyl_y(rr, -h["rohr_v"], y_ende)
     rohr = rohr.union(zyl_z(h["hebel_d"] / 2, y_hebel, za + rr - 1, za + rr + h["hebel_h"]))
-    rohr = rohr.cut(zyl_z(h["bohrung"] / 2, y_hebel, za + rr - 0.5, za + rr + h["hebel_h"] + 1))
-    rohr = rohr.cut(zyl_y(h["modul_d"] / 2, -h["rohr_v"] - 1, l + 1))
+    rohr = rohr.cut(zyl_z(h["sw"] / 0.866 / 2, y_hebel, za + rr - 0.5, za + rr + h["hebel_h"] + 1))
+    rohr = rohr.cut(zyl_y(h["modul_d"] / 2, -h["rohr_v"] - 1, y_ende + 1))
     return fest, rohr
 
 
@@ -258,7 +264,9 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     for yy in (yu_v, yu_h):
         o.append(mittellinie(unten, (yy, -3.5), (yy, 3.5)))
         o.append(mittellinie(seite, (yy, -h["zu_h"] - 1), (yy, h["tasche"] + 1)))
-    for yy, top in ((h["zo_y"], hh + h["zo_h"]), (yh, hebel_top)):
+    zo_y = -h["rohr_v"] + h["zo_abst"] + h["zo_d"] / 2
+    y_ende = h["gesamt"] - h["rohr_v"]
+    for yy, top in ((zo_y, hh + h["zo_h"]), (yh, hebel_top)):
         o.append(mittellinie(seite, (yy, za + rr - 0.5), (yy, top + 1.2)))
 
     # Strahl und Beschriftung
@@ -270,9 +278,10 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     o.append(text(seite, y_frei + h["rohr_frei"] / 2, za + rr / 2, "Drehrohr", "middle", 10, BLAU, dy=4))
     o.append(text(vorn, rb, za + 4.5, "Halbbogen mit Vorbau", dx=8))
     o.append(text(vorn, rb, za, f"Drehrohr Ø{zahl(h['rohr_d'])}", dx=8, dy=20, farbe=BLAU))
-    o.append(text(hinten, rb, hebel_top, f"Hebelrohr Ø{zahl(h['hebel_d'])} ?", dx=8, dy=16))
-    o.append(text(vorn, h["zo_d"] / 2, hh + h["zo_h"], f"Zapfen Ø{zahl(h['zo_d'])} ?", dx=8, dy=14))
-    o.append(text(hinten, rb, za + rr, "Drehrohr Ø11,9", dx=8, dy=4, farbe=BLAU))
+    o.append(text(hinten, rb, hebel_top, f"Hebelrohr Ø{zahl(h['hebel_d'])}, innen Bohrung", dx=8, dy=16))
+    o.append(text(vorn, -h["zo_d"] / 2, hh + h["zo_h"], f"Zapfen Ø{zahl(h['zo_d'])},", "end", dx=-8, dy=8))
+    o.append(text(vorn, -h["zo_d"] / 2, hh + h["zo_h"], "innen Sechskant", "end", dx=-8, dy=24))
+    o.append(text(hinten, rb, za + rr, f"Drehrohr Ø{zahl(h['rohr_d'])}", dx=8, dy=4, farbe=BLAU))
     o.append(text(unten, -h["rohr_v"], 0, "Laser", "end", 11, MASS, dx=-12, dy=-6))
     for yy, d, t, dy in [(yu_v, h["zu_vorn_d"], f"Ø{zahl(h['zu_vorn_d'])} Steckzapfen (Blechloch)", 34),
                          (yu_h, h["zu_hint_d"], f"Ø{zahl(h['zu_hint_d'])} M3, Schraube mit Feder", 56)]:
@@ -283,17 +292,20 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
 
     # Maße Seitenansicht
     o.append(mass_h(seite, 0, l, -h["zu_h"], zahl(l), 40, ref_v=0))
-    o.append(mass_h(seite, -h["rohr_v"], l, -h["zu_h"], "24,0 gesamt", 70, ref_v=za - rr))
+    o.append(mass_h(seite, -h["rohr_v"], y_ende, -h["zu_h"], f"{zahl(h['gesamt'])} gesamt", 70, ref_v=za - rr))
+    o.append(mass_h(seite, l, y_ende, za - rr, "", 12))
+    o.append(text(seite, y_ende, za - rr, f"{zahl(y_ende - l)} ?", dx=6, dy=17))
+    o.append(mass_h(seite, -h["rohr_v"], 0, za - rr, "", 12))
+    o.append(text(seite, -h["rohr_v"], za - rr, zahl(h["rohr_v"]), "end", dx=-6, dy=17))
     o.append(mass_h(seite, 0, yu_v - h["zu_vorn_d"] / 2, -h["zu_h"], zahl(h["zu_vorn_rand"]), 16))
     o.append(mass_h(seite, yu_h + h["zu_hint_d"] / 2, l, -h["zu_h"], zahl(h["zu_hint_rand"]), 16))
     o.append(mass_h(seite, y_frei, l, hebel_top, zahl(h["rohr_frei"]), -14, ref_v=hh))
-    o.append(mass_h(seite, 0, h["zo_y"], hh + h["zo_h"], f"{zahl(h['zo_y'])} ?", -26, ref_v=hh))
+    o.append(mass_h(seite, -h["rohr_v"], zo_y - h["zo_d"] / 2, hh + h["zo_h"], zahl(h["zo_abst"]), -26, ref_v=hh))
     luecke = (yu_h - h["zu_hint_d"] / 2) - (yu_v + h["zu_vorn_d"] / 2)
     o.append(mass_h(seite, yu_v + h["zu_vorn_d"] / 2, yu_h - h["zu_hint_d"] / 2, -h["zu_h"], f"{zahl(luecke)} ?", 16))
     o.append(mass_v(seite, za + rr, hebel_top, l, zahl(h["hebel_h"]), 28, ref_u=yh + h["hebel_d"] / 2))
     o.append(mass_v(seite, -h["zu_h"], 0, l, zahl(h["zu_h"]), 28, ref_u=l))
-    o.append(mass_v(seite, hh, hh + h["zo_h"], h["zo_y"] - h["zo_d"] / 2, zahl(h["zo_h"]), -14))
-    o.append(text(seite, -h["rohr_v"], za + rr, zahl(h["rohr_v"]), "end", dx=-4, dy=-6))
+    o.append(mass_v(seite, hh, hh + h["zo_h"], zo_y - h["zo_d"] / 2, zahl(h["zo_h"]), -14))
     # Maße vorn
     o.append(mass_h(vorn, -rb, rb, -h["zu_h"], zahl(b), 30, ref_v=0))
     o.append(mass_v(vorn, 0, hh, -rb, zahl(hh), -24, ref_u=0))
@@ -315,8 +327,8 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     o.append(f'<text x="{px0 + 30}" y="{py0 + 36}" text-anchor="middle" font-size="11" fill="{MASS}">Projektionsmethode 3</text>')
 
     offen = ["Bitte nachmessen (in der Zeichnung mit „?“):",
-             "1  Ø der beiden oberen Zapfen (Madenschraube, Hebelrohr) und Lage des Zapfens ab Stirnseite",
-             "2  Lücke zwischen den unteren Zapfen: gemessen 4,3, aus den Randabständen 3,0 und 2,9 folgen 6,6"]
+             "1  Lücke zwischen den unteren Zapfen: gemessen 4,3, aus Länge 21,5 und Randabständen 3,0 / 2,9 folgen 5,4",
+             "2  Drehrohr steht hinten 1,3 über (24,0 gesamt minus 21,5 Körper minus 1,2 Vorbau)"]
     for k, t in enumerate(offen):
         gewicht = ' font-weight="bold"' if k == 0 else ""
         o.append(f'<text x="20" y="{730 + k * 22}" font-size="13"{gewicht}>{t}</text>')
