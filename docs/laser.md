@@ -42,19 +42,19 @@ Alternative mit einstellbarem Fokus (dünnere Linie): Picotronic LC650-5-3-F(14x
 
 ### Alternative: Laser aus dem KW-triO 13036
 
-Ein vorhandener Hebelschneider KW-triO 13036 („Paper Guillotine with Laser Positioning System“, A4, 315 mm
-Schnittlänge) hat einen Schnittlinien-Laser, der sich ausbauen lässt. Was die Fotos des eingebauten Lasers zeigen:
+Der Laser eines vorhandenen Hebelschneiders KW-triO 13036 („Paper Guillotine with Laser Positioning System“, A4,
+315 mm Schnittlänge) ist ausgebaut. Er saß dort am Drehpunkt, knapp über dem Tisch, und zeichnete die Schnittlinie
+entlang der Schnittkante – dieselbe Lage wie im Konzept, nur niedriger.
 
-| Befund | Bedeutung für die 533 |
-|---|---|
-| Laserklasse 2 laut Typenschild, Leistung nicht angegeben (Klasse 2: sichtbar, höchstens 1 mW) | Der Fächer darf nur auf den Tisch fallen: Halter so geneigt, dass kein Strahl über die Waagerechte geht, dazu eine Blende oben |
-| rundes Messingmodul im Lagerblock am Drehpunkt, Austritt durch ein Loch in der Stirnseite knapp über dem Tisch | dieselbe Lage wie im Konzept, aber niedrig: Der KW-triO zeichnet aus dieser Höhe eine 315-mm-Linie, die 533 braucht 340 mm |
-| Innensechskantschraube oben im Lagerblock, mit Drehpfeilen | dreht die Linie; der Halter für die 533 hat seine eigene Einstellung |
-| 2 × AAA im Fuß eingeformt, roter Taster | 3 V wie beim Picotronic-Modul; Batteriefach und Taster bleiben im KW-triO, der Halter bekommt einen Batteriehalter 2 × AAA mit Schalter |
+| Teil | Befund | Verwendung an der 533 |
+|---|---|---|
+| Lasermodul | Messinghülse mit Linienoptik, rotes und schwarzes Kabel, Laserklasse 2 laut Typenschild des Geräts, Leistung nicht angegeben (Klasse 2: sichtbar, höchstens 1 mW) | so wie es ist, im Zinkhalter |
+| Zinkhalter | Druckgussblock mit zylindrischer Aufnahme für das Modul; vorderer Ring mit seitlichem Zapfen (Hebel zum Drehen der Linie); Befestigung am Blechrahmen mit Schraube und Druckfeder, dazu eine Madenschraube mit Innensechskant zum Kippen | ganzer Block wird am Reiter angeschraubt; Drehen und Kippen wie im KW-triO, mit Stellschrauben im gedruckten Teil |
+| Taster und Kontakte | roter Drucktaster, Batteriefedern für 2 × AAA (3 V), angelötet | Batteriefach im gedruckten Teil mit diesen Federn und dem Taster – oder ein gekaufter Batteriehalter 2 × AAA mit Schalter |
 
-Das Modul stammt aus einem Gerät für unter 35 €: Linienqualität und Leistung sind ohne Datenblatt. Die Linie im
-KW-triO zeigt, was es an der 533 leisten würde (L-7). Die Klassenangabe eines Billiggeräts ist nicht verlässlich –
-die Auslegung mit Fächer nur auf den Tisch und Blende hält auch ein stärkeres Modul unter Augenhöhe.
+Das Modul stammt aus einem Gerät für unter 35 €: Linienqualität und Leistung sind ohne Datenblatt (L-7). Die
+Klassenangabe eines Billiggeräts ist nicht verlässlich – die Auslegung mit Fächer nur auf den Tisch und Blende hält
+auch ein stärkeres Modul unter Augenhöhe.
 
 Niedrig montiert braucht der Reiter keinen hohen Ausleger, und das Licht bleibt nahe am Tisch, weit unter Augenhöhe.
 Ob der Laser bei der 533 niedrig sitzen kann oder über den Lagerbock hinwegsehen muss, entscheidet L-2.
@@ -76,10 +76,9 @@ Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf
 | L-1 (Streifen hinter der Schiene) | Breite der blauen Tischfläche zwischen hinterer Winkelanlage und Tischkante | Platz für die Haltemagnete des Reiters |
 | L-2 (Lagerbock) | Höhe und Breite des grauen Lagerbocks am Drehpunkt, über dem Tisch | Laser muss darüber hinwegsehen |
 | L-3 (Schienenende) | Abstand vom messerseitigen Ende der hinteren Winkelanlage zur Schnittkante | Länge des Auslegers |
-| L-4 (Austrittshöhe KW-triO) | Höhe der Mitte des Austrittslochs über dem Tisch des KW-triO – ohne Ausbau | Höhe, aus der der Laser eine brauchbare Linie zeichnet |
-| L-5 (Linienbeginn KW-triO) | Abstand vom Austrittsloch bis zum Beginn der Linie auf dem Tisch, und ob die Linie bis zum vorderen Ende reicht – ohne Ausbau | steilster Strahl des Fächers, Reichweite |
-| L-7 (Linie KW-triO) | Linie im KW-triO einschalten und ansehen: Dicke am nahen und am fernen Ende, gut sichtbar bei Raumlicht? – ohne Ausbau | entscheidet zwischen KW-triO-Modul und Picotronic |
-| L-6 (Modul KW-triO) | Durchmesser und Länge des Moduls, Befestigung, Kabellänge – erst nach dem Ausbau | Aufnahme im Halter |
+| L-6 (Zinkhalter) | Außenmaße (Länge in Strahlrichtung, Breite, Höhe ohne Zapfen); Höhe der Strahlachse über der Fläche, die am Blech anlag; Gewinde und Lage des Schraubenlochs und der Madenschraube; Durchmesser des Zapfens und sein Abstand zur Achse; lässt sich der vordere Ring mit dem Zapfen drehen? | Anschraubfläche und Stellschrauben am Reiter |
+| L-7 (Linie) | Laser an 2 × AAA (rot an Plus), auf den Tisch richten: Dicke der Linie nah und in etwa 35 cm, gut sichtbar bei Raumlicht? | entscheidet zwischen KW-triO-Modul und Picotronic |
+| L-8 (Fächerwinkel) | Laser 100 mm über dem Tisch senkrecht nach unten halten, Länge der Linie messen | Neigung und Höhe am Reiter |
 
 Dazu ein Foto der hinteren rechten Ecke der 533 (Drehpunkt), schräg von oben.
 
