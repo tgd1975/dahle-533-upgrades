@@ -80,7 +80,7 @@ Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf
 | L-1 (Streifen hinter der Schiene) | Breite der blauen Tischfläche zwischen hinterer Winkelanlage und Tischkante | Platz für die Haltemagnete des Reiters |
 | L-2 (Lagerbock) | Höhe und Breite des grauen Lagerbocks am Drehpunkt, über dem Tisch | Laser muss darüber hinwegsehen |
 | L-3 (Schienenende) | Abstand vom messerseitigen Ende der hinteren Winkelanlage zur Schnittkante | Länge des Auslegers |
-| L-6 (Zinkhalter) | Außenmaße, Schraube, Feder und Taster stehen in den Zeichnungen. Es fehlen: Gewinde-Ø der Schraube (vermutlich M3); Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite; Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) | Anschraubfläche und Stellschrauben am Reiter |
+| L-6 (Zinkhalter) | Außenmaße, Schraube (M3 × 8), Feder und Taster stehen in den Zeichnungen. Es fehlen: Höhe des Hebelzapfens auf dem Drehteil und wie weit es sich dreht; Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite; Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) | Anschraubfläche und Stellschrauben am Reiter |
 | L-7 (Linie) | Laser an 2 × AAA (rot an Plus), auf den Tisch richten: Dicke der Linie nah und in etwa 35 cm, gut sichtbar bei Raumlicht? | entscheidet zwischen KW-triO-Modul und Picotronic |
 | L-8 (Fächerwinkel) | Laser 100 mm über dem Tisch senkrecht nach unten halten, Länge der Linie messen | Neigung und Höhe am Reiter |
 

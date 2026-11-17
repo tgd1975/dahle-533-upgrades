@@ -205,9 +205,9 @@ HALTER = {
     "zapfen2_d": 5.7,     # Zapfen mit Gewinde (Befestigung?)
     "luecke": 4.3,        # Lücke zwischen den Zapfen unten
     "zapfen_unten": 4.2,  # Zapfen steht unten vor
-    "zapfen_oben": 6.4,   # langer Zapfen oben (Drehring?)
-    "zapfen_oben2": 3.7,  # kurzer Zapfen oben
-    "tasche": 3.1,        # Tiefe der offenen Unterseite (3,1 / 3,2)
+    "dreh_l": 6.4,        # drehbares Teil hinten (Kabelseite), Länge entlang der Achse
+    "dreh_zapfen_h": 5.0, # Hebelzapfen auf dem Drehteil, Höhe geschätzt
+    "zapfen_oben2": 3.7,  # fester Zapfen oben
 }
 
 
@@ -230,14 +230,14 @@ def halter() -> str:
     pfad = (f"M{fx(-b/2)},{fy(0)} L{fx(-b/2)},{fy(achse)} A{r_bogen*s},{r_bogen*s} 0 0 1 {fx(b/2)},{fy(achse)} "
             f"L{fx(b/2)},{fy(0)} Z")
     zd, zu = h["zapfen_d"], h["zapfen_unten"]
-    o.append(f'<rect x="{fx(-zd/2)}" y="{fy(hh) - h["zapfen_oben"]*s}" width="{zd*s}" height="{h["zapfen_oben"]*s + 4}" {stil}/>')
+    o.append(f'<rect x="{fx(-zd/2)}" y="{fy(hh) - h["dreh_zapfen_h"]*s}" width="{zd*s}" height="{h["dreh_zapfen_h"]*s + 4}" {stil}/>')
     o.append(f'<rect x="{fx(-zd/2)}" y="{fy(0) - 4}" width="{zd*s}" height="{zu*s + 4}" {stil}/>')
     o.append(f'<path d="{pfad}" {stil}/>')
     o.append(f'<circle cx="{fx(0)}" cy="{fy(achse)}" r="{h["ring_d"]/2*s}" fill="#d0d0d0" stroke="{LINIE}" stroke-width="1.4"/>')
     o.append(f'<circle cx="{fx(0)}" cy="{fy(achse)}" r="{4.5*s}" fill="#d9b44a" stroke="{LINIE}"/>')
     o.append(f'<line x1="{fx(-3)}" y1="{fy(achse)+2.6*s}" x2="{fx(3)}" y2="{fy(achse)-2.6*s}" stroke="{ROT}" stroke-width="2"/>')
     o.append(f'<line x1="{fx(-b/2-3)}" y1="{fy(achse)}" x2="{fx(b/2+3)}" y2="{fy(achse)}" stroke="{MASS}" stroke-dasharray="8,3,2,3"/>')
-    o.append(f'<text x="{cx}" y="{fy(hh) - h["zapfen_oben"]*s - 30}" text-anchor="middle" font-weight="bold">Vorderansicht (Optik)</text>')
+    o.append(f'<text x="{cx}" y="{fy(hh) - h["dreh_zapfen_h"]*s - 30}" text-anchor="middle" font-weight="bold">Vorderansicht (Optik)</text>')
     o.append(mass_h(fx(-b/2), fx(b/2), fy(0) + zu*s + 30, f"{zahl(b)}", oben=False))
     o.append(hilfslinie(fx(-b/2), fy(0), fx(-b/2), fy(0) + zu*s + 34))
     o.append(hilfslinie(fx(b/2), fy(0), fx(b/2), fy(0) + zu*s + 34))
@@ -247,7 +247,7 @@ def halter() -> str:
     o.append(mass_v(fx(b/2 + 4), fy(0), fy(achse), f"{zahl(achse)} ?"))
     o.append(f'<text x="{fx(b/2 + 5)}" y="{fy(achse/2) + 22}" font-size="11" fill="{MASS}">Strahlachse, gerechnet</text>')
     o.append(f'<text x="{fx(h["ring_d"]/2) + 6}" y="{fy(achse + 5.2)}" font-size="12">Drehring Ø{zahl(h["ring_d"])}</text>')
-    o.append(f'<text x="{fx(zd/2) + 6}" y="{fy(hh) - h["zapfen_oben"]*s + 14}" font-size="12">Zapfen Ø{zahl(zd)} ?</text>')
+    o.append(f'<text x="{fx(zd/2) + 6}" y="{fy(hh) - h["dreh_zapfen_h"]*s + 14}" font-size="12">Zapfen Ø{zahl(zd)} ?</text>')
     o.append(f'<text x="{fx(zd/2) + 6}" y="{fy(0) + zu*s - 4}" font-size="12">Zapfen</text>')
 
     # --- Seitenansicht (Strahl nach links), Unterseite unten
@@ -255,17 +255,20 @@ def halter() -> str:
     def gx(x): return sx0 + x * s
     def gy(z): return sy0 - z * s
     st = h["stufe"]
-    pos_o = [0.25 * l, 0.82 * l]  # geschätzt
+    dl, dz = h["dreh_l"], h["dreh_zapfen_h"]
+    pos_o = [0.25 * l, l - dl / 2]  # fester Zapfen geschätzt, Hebel mittig auf dem Drehteil
     pos_u = [0.30 * l, 0.75 * l]  # geschätzt
-    for x, hoch in zip(pos_o, [h["zapfen_oben2"], h["zapfen_oben"]]):
+    for x, hoch in zip(pos_o, [h["zapfen_oben2"], dz]):
         o.append(f'<rect x="{gx(st + x) - zd/2*s}" y="{gy(hh) - hoch*s}" width="{zd*s}" height="{hoch*s + 4}" {stil}/>')
     for x, d in zip(pos_u, [h["zapfen_d"], h["zapfen2_d"]]):
         o.append(f'<rect x="{gx(st + x) - d/2*s}" y="{gy(0) - 4}" width="{d*s}" height="{zu*s + 4}" {stil}/>')
     o.append(f'<rect x="{gx(st)}" y="{gy(hh)}" width="{l*s}" height="{hh*s}" {stil}/>')
+    o.append(f'<rect x="{gx(st + l - dl)}" y="{gy(hh)}" width="{dl*s}" height="{hh*s}" fill="#cfd8e3" stroke="{LINIE}" stroke-width="1.6"/>')
+    o.append(f'<text x="{gx(st + l - dl/2)}" y="{gy(achse/2)}" text-anchor="middle" font-size="12">drehbar</text>')
     o.append(f'<rect x="{gx(0)}" y="{gy(achse + h["ring_d"]/2)}" width="{st*s + 2}" height="{h["ring_d"]*s}" fill="#d0d0d0" stroke="{LINIE}" stroke-width="1.4"/>')
     o.append(f'<line x1="{gx(-6)}" y1="{gy(achse)}" x2="{gx(st + l + 6)}" y2="{gy(achse)}" stroke="{MASS}" stroke-dasharray="8,3,2,3"/>')
     o.append(f'<line x1="{gx(-12)}" y1="{gy(achse)}" x2="{gx(-2)}" y2="{gy(achse)}" stroke="{ROT}" stroke-width="3"/>')
-    o.append(f'<text x="{gx(st + l/2)}" y="{gy(hh) - h["zapfen_oben"]*s - 30}" text-anchor="middle" font-weight="bold">Seitenansicht</text>')
+    o.append(f'<text x="{gx(st + l/2)}" y="{gy(hh) - dz*s - 30}" text-anchor="middle" font-weight="bold">Seitenansicht</text>')
     o.append(f'<text x="{gx(st + l + 2)}" y="{gy(achse) - 8}" font-size="12">Kabel</text>')
     o.append(f'<text x="{gx(-14)}" y="{gy(achse) - 8}" font-size="12" text-anchor="end" fill="{ROT}">Strahl</text>')
     yl = gy(0) + zu*s + 30
@@ -273,11 +276,12 @@ def halter() -> str:
     o.append(hilfslinie(gx(st + l), gy(0), gx(st + l), yl + 40))
     o.append(mass_h(gx(st), gx(st + l), yl, f"{zahl(l)}", oben=False))
     o.append(hilfslinie(gx(0), gy(achse - h["ring_d"]/2), gx(0), yl + 40))
-    o.append(mass_h(gx(0), gx(st + l), yl + 36, f"{zahl(h['laenge_ges'])} gesamt ?", oben=False))
+    o.append(mass_h(gx(0), gx(st + l), yl + 36, f"{zahl(h['laenge_ges'])} gesamt", oben=False))
     o.append(f'<text x="{gx(0)}" y="{gy(achse + h["ring_d"]/2) - 8}" font-size="12" text-anchor="middle">{zahl(st)}</text>')
     xo = gx(st + pos_o[1]) + zd/2*s
-    o.append(hilfslinie(xo, gy(hh) - h["zapfen_oben"]*s, xo + 30, gy(hh) - h["zapfen_oben"]*s))
-    o.append(mass_v(xo + 26, gy(hh), gy(hh) - h["zapfen_oben"]*s, f"{zahl(h['zapfen_oben'])} ?"))
+    o.append(hilfslinie(xo, gy(hh) - dz*s, xo + 30, gy(hh) - dz*s))
+    o.append(mass_v(xo + 26, gy(hh), gy(hh) - dz*s, "Hebel ?"))
+    o.append(mass_h(gx(st + l - dl), gx(st + l), gy(hh) + 16, f"{zahl(dl)}", oben=False))
     xo2 = gx(st + pos_o[0]) - zd/2*s
     o.append(hilfslinie(xo2, gy(hh) - h["zapfen_oben2"]*s, xo2 - 30, gy(hh) - h["zapfen_oben2"]*s))
     o.append(mass_v(xo2 - 26, gy(hh), gy(hh) - h["zapfen_oben2"]*s, f"{zahl(h['zapfen_oben2'])} ?", links=True))
@@ -302,20 +306,20 @@ def halter() -> str:
         o.append(f'<circle cx="{ux(x)}" cy="{uy(0)}" r="{1.3*s}" fill="#444"/>')
         o.append(f'<line x1="{ux(x)}" y1="{uy(d/2)}" x2="{ux(x)}" y2="{uy(b/2) + dy - 12}" stroke="{MASS}" stroke-width="0.8"/>')
         o.append(f'<text x="{ux(x)}" y="{uy(b/2) + dy}" text-anchor="middle" font-size="12">Ø{zahl(d)} {art}</text>')
-    o.append(mass_h(ux(x1 + d1/2), ux(x2 - d2/2), uy(-d2/2) - 10, f"{zahl(gap)} ?"))
+    o.append(mass_h(ux(x1 + d1/2), ux(x2 - d2/2), uy(-d2/2) - 10, f"{zahl(gap)}"))
     o.append(mass_h(ux(0), ux(l), uy(b/2) + 76, f"{zahl(l)}", oben=False))
     o.append(hilfslinie(ux(0), uy(b/2), ux(0), uy(b/2) + 80))
     o.append(hilfslinie(ux(l), uy(b/2), ux(l), uy(b/2) + 80))
     o.append(hilfslinie(ux(l), uy(-b/2), ux(l) + 34, uy(-b/2)))
     o.append(hilfslinie(ux(l), uy(b/2), ux(l) + 34, uy(b/2)))
     o.append(mass_v(ux(l) + 30, uy(-b/2), uy(b/2), f"{zahl(b)}"))
-    o.append(f'<text x="{ux(0)}" y="{uy(-b/2) - 8}" font-size="12">Wand {zahl(w)}, Tiefe {zahl(h["tasche"])}–3,2 ?</text>')
+    o.append(f'<text x="{ux(0)}" y="{uy(-b/2) - 8}" font-size="12">Wand {zahl(w)}</text>')
     o.append(f'<text x="{ux(-1)}" y="{uy(0) + 4}" font-size="12" text-anchor="end">Optik</text>')
 
     # --- Legende: was fehlt
     fehl = [
         "Für den Halter am Reiter fehlen noch:",
-        "1  Gewinde-Ø der Schraube (vermutlich M3) – siehe kwtrio_kleinteile.svg",
+        "1  Höhe des Hebelzapfens auf dem Drehteil, Drehwinkel des Drehteils",
         "2  Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite",
         "3  Strahlachse über der Unterseite (Messschieber-Tiefenmaß von unten bis Ring-Mitte) – gerechnet sind 11,4",
     ]
@@ -330,12 +334,12 @@ KLEIN = {
     "schraube_kopf_d": 7.0,   # Bund, gemessen
     "schraube_l_ges": 10.0,   # mit Kopf, gemessen
     "schraube_kopf_h": 2.0,   # geschätzt
-    "schraube_d": 3.0,        # geschätzt, vermutlich M3
+    "schraube_d": 2.8,        # gemessen: Außen-Ø des Gewindes -> M3
     "feder_da": 7.6,          # gemessen
     "feder_l": 5.2,           # entspannt, gemessen
     "feder_draht": 0.8,       # geschätzt
     "taster_b": 8.3, "taster_t": 8.4,  # Gehäuse, gemessen
-    "taster_kappe_d": 7.9,    # gemessen, Zuordnung unsicher
+    "taster_kappe_d": 7.9,    # gemessen
     "taster_kappe_h": 4.0, "taster_l": 9.0, "pin_l": 3.0,  # geschätzt
 }
 
@@ -362,8 +366,8 @@ def kleinteile() -> str:
     o.append(hilfslinie(cx + kd/2*s, yk, cx + kd/2*s + 24, yk))
     o.append(mass_v(cx + kd/2*s + 20, yk, yk + (kh + l)*s, f"{zahl(k['schraube_l_ges'])} gesamt"))
     o.append(hilfslinie(cx + d/2*s, yk + (kh + l)*s, cx + kd/2*s + 24, yk + (kh + l)*s))
-    o.append(mass_h(cx - d/2*s, cx + d/2*s, yk + (kh + l)*s + 30, f"M{zahl(d).replace(',0', '')} ?", oben=False))
-    o.append(f'<text x="{cx}" y="{yk + (kh + l)*s + 80}" text-anchor="middle" font-size="12">Linsenkopf mit Bund, Kreuzschlitz</text>')
+    o.append(mass_h(cx - d/2*s, cx + d/2*s, yk + (kh + l)*s + 30, f"Ø{zahl(d)} = M3", oben=False))
+    o.append(f'<text x="{cx}" y="{yk + (kh + l)*s + 80}" text-anchor="middle" font-size="12">M3 × 8, Linsenkopf mit Bund, Kreuzschlitz (DIN 967)</text>')
 
     # Feder: Seitenansicht und Draufsicht
     fx0, fy0 = 470.0, 150.0
@@ -392,7 +396,7 @@ def kleinteile() -> str:
     o.append(f'<rect x="{tx0 - tb/2*s}" y="{ty0 + (kh2 + tl*0.55)*s}" width="{tb*s}" height="{tl*0.45*s}" fill="#333" stroke="{LINIE}" stroke-width="1.6"/>')
     for x in (-3.0, 0.0, 3.0):
         o.append(f'<rect x="{tx0 + x*s - 3}" y="{ty0 + (kh2 + tl)*s}" width="6" height="{pl*s}" fill="#b08d3c" stroke="{LINIE}"/>')
-    o.append(mass_h(tx0 - kd2/2*s, tx0 + kd2/2*s, ty0 - 10, f"Ø{zahl(kd2)} ?"))
+    o.append(mass_h(tx0 - kd2/2*s, tx0 + kd2/2*s, ty0 - 10, f"Ø{zahl(kd2)}"))
     o.append(mass_h(tx0 - tb/2*s, tx0 + tb/2*s, ty0 + (kh2 + tl + pl)*s + 30, f"{zahl(tb)} × {zahl(tt)}", oben=False))
     xr = tx0 + tb/2*s + 20
     o.append(hilfslinie(tx0 + kd2/2*s, ty0, xr + 4, ty0))

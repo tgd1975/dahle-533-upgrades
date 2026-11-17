@@ -9,28 +9,28 @@
 <text x="20" y="52" font-size="13" fill="#555">Maße in mm, gemessen mit dem Messschieber; „ca.“ = aus dem Foto geschätzt, „?“ = Zuordnung unsicher. Maßstab 12 : 1.</text>
 <text x="150.0" y="100" text-anchor="middle" font-weight="bold">Schraube</text>
 <path d="M108.0,154.0 Q108.0,130.0 150.0,130.0 Q192.0,130.0 192.0,154.0 Z" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
-<rect x="132.0" y="154.0" width="36.0" height="96.0" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
-<line x1="132.0" y1="160.0" x2="168.0" y2="163.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="166.0" x2="168.0" y2="169.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="172.0" x2="168.0" y2="175.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="178.0" x2="168.0" y2="181.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="184.0" x2="168.0" y2="187.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="190.0" x2="168.0" y2="193.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="196.0" x2="168.0" y2="199.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="202.0" x2="168.0" y2="205.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="208.0" x2="168.0" y2="211.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="214.0" x2="168.0" y2="217.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="220.0" x2="168.0" y2="223.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="226.0" x2="168.0" y2="229.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="232.0" x2="168.0" y2="235.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="238.0" x2="168.0" y2="241.0" stroke="#333" stroke-width="0.6"/>
-<line x1="132.0" y1="244.0" x2="168.0" y2="247.0" stroke="#333" stroke-width="0.6"/>
+<rect x="133.2" y="154.0" width="33.599999999999994" height="96.0" fill="#e4e4e4" stroke="#333" stroke-width="1.6"/>
+<line x1="133.2" y1="160.0" x2="166.8" y2="163.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="166.0" x2="166.8" y2="169.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="172.0" x2="166.8" y2="175.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="178.0" x2="166.8" y2="181.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="184.0" x2="166.8" y2="187.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="190.0" x2="166.8" y2="193.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="196.0" x2="166.8" y2="199.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="202.0" x2="166.8" y2="205.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="208.0" x2="166.8" y2="211.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="214.0" x2="166.8" y2="217.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="220.0" x2="166.8" y2="223.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="226.0" x2="166.8" y2="229.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="232.0" x2="166.8" y2="235.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="238.0" x2="166.8" y2="241.0" stroke="#333" stroke-width="0.6"/>
+<line x1="133.2" y1="244.0" x2="166.8" y2="247.0" stroke="#333" stroke-width="0.6"/>
 <line x1="108.0" y1="120.0" x2="192.0" y2="120.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="150.0" y="114.0" text-anchor="middle">Ø7,0</text>
 <line x1="192.0" y1="130.0" x2="216.0" y2="130.0" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="212.0" y1="130.0" x2="212.0" y2="250.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="220.0" y="195.0" text-anchor="start">10,0 gesamt</text>
-<line x1="168.0" y1="250.0" x2="216.0" y2="250.0" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
-<line x1="132.0" y1="280.0" x2="168.0" y2="280.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="150.0" y="298.0" text-anchor="middle">M3 ?</text>
-<text x="150.0" y="330.0" text-anchor="middle" font-size="12">Linsenkopf mit Bund, Kreuzschlitz</text>
+<line x1="166.8" y1="250.0" x2="216.0" y2="250.0" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
+<line x1="133.2" y1="280.0" x2="166.8" y2="280.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="150.0" y="298.0" text-anchor="middle">Ø2,8 = M3</text>
+<text x="150.0" y="330.0" text-anchor="middle" font-size="12">M3 × 8, Linsenkopf mit Bund, Kreuzschlitz (DIN 967)</text>
 <text x="470.0" y="100" text-anchor="middle" font-weight="bold">Druckfeder</text>
 <line x1="429.2" y1="155.6" x2="510.8" y2="165.20000000000002" stroke="#333" stroke-width="7.6800000000000015" stroke-linecap="round"/>
 <line x1="429.2" y1="176.39999999999998" x2="510.8" y2="186.0" stroke="#333" stroke-width="7.6800000000000015" stroke-linecap="round"/>
@@ -48,7 +48,7 @@
 <rect x="761.0" y="296.0" width="6" height="36.0" fill="#b08d3c" stroke="#333"/>
 <rect x="797.0" y="296.0" width="6" height="36.0" fill="#b08d3c" stroke="#333"/>
 <rect x="833.0" y="296.0" width="6" height="36.0" fill="#b08d3c" stroke="#333"/>
-<line x1="752.6" y1="130.0" x2="847.4" y2="130.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="800.0" y="124.0" text-anchor="middle">Ø7,9 ?</text>
+<line x1="752.6" y1="130.0" x2="847.4" y2="130.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="800.0" y="124.0" text-anchor="middle">Ø7,9</text>
 <line x1="750.2" y1="362.0" x2="849.8" y2="362.0" stroke="#555" marker-start="url(#pfeil0)" marker-end="url(#pfeil)"/><text x="800.0" y="380.0" text-anchor="middle">8,3 × 8,4</text>
 <line x1="847.4" y1="140.0" x2="873.8" y2="140.0" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
 <line x1="849.8" y1="296.0" x2="873.8" y2="296.0" stroke="#555" stroke-width="0.8" stroke-dasharray="3,3"/>
