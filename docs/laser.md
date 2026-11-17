@@ -1,7 +1,7 @@
 # Schnittlinien-Laser zum Nachrüsten – Konzept
 
-**Stand 2026-11-16: Konzept, noch kein Druckteil.** Der Halter wird gezeichnet, sobald die drei Maße aus dem
-Abschnitt „Offene Maße“ vorliegen – ohne sie wäre er geraten.
+**Konzept ohne Druckteil.** Der Halter braucht die drei Maße aus dem Abschnitt „Offene Maße“ – ohne sie wäre er
+geraten.
 
 Aus den Fotos der Maschine ([docs/fotos/](fotos/)): Hinter der hinteren Winkelanlage liegt ein blauer Streifen
 Tisch von rund 20 mm (mit dem Dahle-Schriftzug), die Winkelanlage hat dieselbe Nut wie vorne (4,0 mm breit), und

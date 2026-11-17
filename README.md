@@ -2,10 +2,10 @@
 
 Selbstgebaute Nachrüstteile für die Hebelschneidemaschine Dahle 533.
 
-| Teil | Stand 2026-11-17 |
+| Teil | Unterlagen |
 |---|---|
-| **Anschlagschieber** – Ersatz für den verlorenen Rückanschlag (Original: „Rückanschlag 613“, Dahle 00613-17229), gedruckt aus PETG auf dem Bambu Lab P1P | Asymmetrische Variante: Passprobe passt, als Nächstes der Schieber selbst (siehe [TODO.md](TODO.md)). Die symmetrische Variante wird nicht gedruckt, Modell und Projektdatei bleiben im Repo |
-| **Schnittlinien-Laser** zum Nachrüsten | Konzept, noch kein Druckteil: [docs/laser.md](docs/laser.md) |
+| **Anschlagschieber** – Ersatz für den fehlenden Rückanschlag (Original: „Rückanschlag 613“, Dahle 00613-17229), gedruckt aus PETG auf dem Bambu Lab P1P | Modelle und Projektdateien für Bambu Studio in zwei Varianten; die asymmetrische ist mit der Passprobe erprobt, die symmetrische nicht gedruckt |
+| **Schnittlinien-Laser** zum Nachrüsten | Konzept ohne Druckteil: [docs/laser.md](docs/laser.md) |
 
 Der Rest dieser Seite beschreibt den Anschlagschieber.
 
@@ -52,18 +52,16 @@ dort wächst das mögliche Spiel am Balkenende von 0,34 auf etwa 0,7 mm (0,2 mm 
 Beim Einstellen den Schieber leicht zur Tischmitte ziehen oder zur Schiene drücken – immer gleich –, dann liegt
 die Zunge an derselben Nutflanke an und das Spiel fällt aus der Messung heraus.
 
-Verlauf: Die erste Passprobe (eine beidseitig eingespannte Feder nahe der Anschlagfläche, 0,7 mm Vorspannung)
-war viel zu stramm und lag in Messernähe außerhalb der Schiene; die Magnettasche passte. Die zweite Fassung
-hatte 3,5 mm Zunge und zwei weiche Federzungen; auf Wunsch sind es 3,8 mm und keine Federn (2026-11-17). Die Passprobe dieser dritten Fassung passt (2026-11-17). Die Nut
-ist nur oben gemessen (4,0 mm) – klemmt die Zunge in der Tiefe oder über die Länge, `luft_nut` auf 0,3 stellen.
+Die Nut ist nur oben gemessen (4,0 mm) – klemmt die Zunge in der Tiefe oder über die Länge, `luft_nut` auf 0,3
+stellen.
 
 Stellschrauben in `cad/masse.toml`, Abschnitt `[asym]`: `luft_nut` (Spiel der starren Zunge);
-`federn = [32.0, 91.0]` baut die zwei Federzungen wieder ein. Für die hintere Winkelanlage baut
+`federn = [32.0, 91.0]` baut zwei Federzungen ein. Für die hintere Winkelanlage baut
 `schiene = "hinten"` das Spiegelbild.
 
 ## Maße der Winkelanlage
 
-Gemessen am 2026-11-16 mit dem Messschieber ([Fotos](docs/fotos/)). Querschnitt, Blick entlang der Schiene:
+Gemessen mit dem Messschieber ([Fotos](docs/fotos/)). Querschnitt, Blick entlang der Schiene:
 
 ![Querschnitt der Winkelanlage mit den Maßen A bis E](docs/bilder/winkelanlage_querschnitt.svg)
 
@@ -109,17 +107,13 @@ Was zum Teil gehört, steht als Objekteinstellung in der Datei und gilt über je
 auf dem Bett; Zunge und Magnettaschen zeigen nach oben.
 
 Ohne Projekteinstellungen geht es nicht: Fehlen sie, meldet Bambu Studio „von einer alten Version erzeugt, nur
-Geometriedaten werden geladen“ und verwirft Platten und Objekteinstellungen (so geschehen am 2026-11-17).
+Geometriedaten werden geladen“ und verwirft Platten und Objekteinstellungen.
 
 **Warping:** Die Teile sind lang und schmal und liegen flach auf dem Bett – dafür ist PETG empfindlich, wenn
 Zugluft über das Bett streicht. Deshalb der Brim. Am Drucker: Vorderseite schließen (oben darf offen bleiben),
 Platte entfetten, Teil erst abnehmen, wenn das Bett abgekühlt ist. Hebt es sich trotzdem, im Filamentprofil den
 Bauteillüfter senken (Systemprofil Generic PETG: 40–90 %; 20–50 % reichen für diese Teile). Den Brim nach dem
 Druck abbrechen und die Kante der Oberseite entgraten.
-
-Bis 2026-11-17 waren die Dateien fertig gesliced – mit einem falschen Start-G-Code (allgemeiner Ersatz statt der
-Startroutine des P1P, weil die Profile für die Kommandozeile unvollständig waren). Ältere Kopien nicht mehr
-drucken.
 
 **Passprobe asymmetrisch:** auf die vordere Winkelanlage setzen. Sie soll von selbst in die Nut fallen und sich
 über die ganze Schiene leicht schieben lassen. Am Ende der Führung quer wackeln: höchstens 0,2 mm Spiel.

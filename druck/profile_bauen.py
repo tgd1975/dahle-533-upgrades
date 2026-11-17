@@ -31,7 +31,7 @@ FILAMENT = "Generic PETG @BBL P1P"
 # Einziger eigener Wert: der Plattentyp des Projekts (kein Profilwert). Ohne Angabe trägt die
 # Kommandozeile die Cool Plate ein, die für PETG gesperrt ist. In Bambu Studio umstellbar.
 PROZESS_EIGEN = {
-    "curr_bed_type": "Engineering Plate",   # Platte des Besitzers für PETG (2026-11-17)
+    "curr_bed_type": "Engineering Plate",   # Platte des Besitzers für PETG
 }
 
 
