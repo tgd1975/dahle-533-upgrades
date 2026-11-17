@@ -161,3 +161,16 @@ Sie soll ohne Druck hineinfallen und sich entlang der Schiene leicht schieben la
 - Original und Fotos: [Dahle Rückanschlag 613 bei DynaTech](https://www.dynatech.de/dahle-rueckanschlag-613-schneidemaschine-533-534-560-561-neues-altes-design),
   [Datenblatt Dahle 533](https://assets.office-discount.at/img/24/21/i1578773.pdf)
 - Magnet: [supermagnete S-10-03-N](https://www.supermagnete.de/eng/disc-magnets-neodymium/disc-magnet-10mm-3mm_S-10-03-N)
+
+## Lizenz
+
+© 2026 tgd1975
+
+- **Modelle, Projektdateien, Fotos, Bilder und Doku** (`modelle/`, `druck/*.3mf`, `docs/`, `cad/masse.toml`,
+  diese Texte): [CC BY 4.0](LICENSE) – nutzen, ändern, weitergeben und auch verkaufen erlaubt, mit Namensnennung.
+- **Skripte** (`cad/*.py`, `druck/*.py`, `druck/projekt.sh`): [MIT](LICENSES/MIT.txt).
+- **Ausnahme `druck/profil/`:** unveränderte Systemprofile aus Bambu Studio, © Bambu Lab, unter der Lizenz von
+  Bambu Studio ([AGPL-3.0](https://github.com/bambulab/BambuStudio/blob/master/LICENSE)).
+
+Ein privates Bastelprojekt, nicht von Dahle; „Dahle“ ist eine Marke ihres Inhabers und steht hier nur, um zu sagen,
+wozu die Teile passen.

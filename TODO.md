@@ -1,6 +1,6 @@
 # TODO – Dahle 533 Upgrades
 
-Nächste Kennung: TD-8
+Nächste Kennung: TD-10
 
 Aufbau: jede Zeile `- [ ] TD-<n> - **Was:** Befehl oder Link – warum. *(Chat)*`. Erledigtes mit Datum abhaken und
 nach „## Erledigt“ ans Dateiende verschieben (neueste zuerst), nie löschen. Kennungen werden nicht wiederverwendet.
@@ -13,6 +13,8 @@ nach „## Erledigt“ ans Dateiende verschieben (neueste zuerst), nie löschen.
 - [ ] TD-5 - **Laser entscheiden und messen:** ob das Lasermodul für 33,90 € gewünscht ist, und die Maße L-1 bis L-3 samt Foto der Drehpunkt-Ecke ([docs/laser.md](docs/laser.md), Abschnitt „Offene Maße“) – erst damit lässt sich der Halter zeichnen. *(dahle533-upgrades)*
 - [ ] TD-6 - **Passprobe asymmetrisch drucken (3. Fassung, ohne Federn):** Platte 1 aus [druck/dahle533_asymmetrisch.3mf](druck/dahle533_asymmetrisch.3mf) (in Bambu Studio slicen, etwa 33 min, 13 g, mit Brim) und auf die vordere Winkelanlage setzen – zeigt, ob die 3,8 mm dicke starre Zunge in der 4,0-mm-Nut über die ganze Schiene leicht läuft; die erste Fassung war viel zu stramm, die zweite (mit Federn) wurde nicht gedruckt. *(dahle533-upgrades)*
 - [ ] TD-7 - **Asymmetrischen Schieber drucken:** Platte 2 aus [druck/dahle533_asymmetrisch.3mf](druck/dahle533_asymmetrisch.3mf) (in Bambu Studio slicen, etwa 91 min, 47 g, mit Brim), sobald die Passprobe passt; die vier gefundenen Magnete mit Sekundenkleber einkleben. *(dahle533-upgrades)*
+- [ ] TD-8 - **GitHub-Löschrecht freigeben:** `gh auth refresh -h github.com -s delete_repo` im Terminal – damit das Repo tgd1975/dahle-533-upgrades gelöscht und ohne die alten Foto-Commits mit GPS neu angelegt werden kann; bis dahin ist es privat. *(dahle533-upgrades)*
+- [ ] TD-9 - **Auf Printables veröffentlichen:** Lizenz dort „Creative Commons – Attribution“ (CC BY 4.0) wählen, wie im Repo; Fotos aus [docs/fotos/](docs/fotos/) sind ohne GPS. *(dahle533-upgrades)*
 
 ## Erledigt
 
