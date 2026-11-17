@@ -75,20 +75,38 @@ Ob der Laser bei der 533 niedrig sitzen kann oder über den Lagerbock hinwegsehe
 
 Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf einstellen.
 
+## Maße an der 533
+
+Gemessen mit dem Messschieber, alle ab der hinteren Winkelanlage:
+
+| | Maß | Wert |
+|---|---|---|
+| L-1 (Streifen hinter der Schiene) | Winkelanlage bis Kante der blauen Tischfläche | 38,4 mm |
+| | Winkelanlage bis Außenkante des grauen Rahmens | 51,4 mm |
+| L-2 (Lagerbock) | grauer Zylinder am Drehpunkt: Länge entlang der Schiene | 31,5 mm |
+| | Durchmesser | 31 mm |
+| | Höhe über dem Tisch | 31,6 mm |
+| L-3 (Schienenende) | Ende der Winkelanlage bis Schnittkante | 32,2 mm |
+| | Ende der Winkelanlage bis Ende der blauen Tischfläche | 29,5 mm |
+
+![Messstellen L-1 bis L-3 an der hinteren Ecke der 533](bilder/laser_messstellen.jpg)
+
+Was daraus folgt:
+
+- Der Lagerbock füllt die Lücke zwischen Schienenende und Schnittkante fast ganz (31,5 von 32,2 mm) und ist
+  31,6 mm hoch. Niedrig in der Schnittebene wie im KW-triO ist hinten kein Platz.
+- Der blaue Streifen hinter der Schiene ist 38,4 mm breit – genug Fläche für die Magnete des Reiters.
+- Die Lichtebene muss nur die Schnittkante enthalten, sie darf um die Kante gekippt sein. Ein Laser neben der
+  Schnittebene zeichnet die Linie richtig auf den Tisch, auf einem Papierstapel aber um
+  Stapelhöhe × seitlicher Abstand / Laserhöhe versetzt.
+
 ## Offene Maße
 
 | | Maß | wofür |
 |---|---|---|
-| L-1 (Streifen hinter der Schiene) | Breite der blauen Tischfläche zwischen hinterer Winkelanlage und Tischkante | Platz für die Haltemagnete des Reiters |
-| L-2 (Lagerbock) | Höhe und Breite des grauen Lagerbocks am Drehpunkt, über dem Tisch | Laser muss darüber hinwegsehen |
-| L-3 (Schienenende) | Abstand vom messerseitigen Ende der hinteren Winkelanlage zur Schnittkante | Länge des Auslegers |
-| L-6 (Zinkhalter) | Außenmaße, Schraube (M3 × 8), Feder und Taster stehen in den Zeichnungen. Es fehlen: Höhe des Hebelzapfens auf dem Drehteil und wie weit es sich dreht; Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite; Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) | Anschraubfläche und Stellschrauben am Reiter |
 | L-7 (Linie) | Laser an 2 × AAA (rot an Plus), auf den Tisch richten: Dicke der Linie nah und in etwa 35 cm, gut sichtbar bei Raumlicht? | entscheidet zwischen KW-triO-Modul und Picotronic |
 | L-8 (Fächerwinkel) | Laser 100 mm über dem Tisch senkrecht nach unten halten, Länge der Linie messen | Neigung und Höhe am Reiter |
-
-![Messstellen L-1 bis L-3 an der hinteren Ecke der 533](bilder/laser_messstellen.jpg)
-
-Dazu ein Foto der hinteren rechten Ecke der 533 (Drehpunkt), schräg von oben.
+| L-9 (Lagerbock oben) | Foto der hinteren rechten Ecke schräg von oben, mit Messer zu und offen: was sitzt oben auf dem Lagerbock, wie weit schwenkt der Messerarm über ihn? | ob der Laser auf oder über dem Lagerbock sitzen kann |
 
 ## Risiken
 
