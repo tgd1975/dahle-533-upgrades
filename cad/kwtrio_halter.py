@@ -33,7 +33,7 @@ HALTER = {
     "laenge": 22.7,        # Körper
     "achse": 11.4,         # Strahlachse über der Unterseite
     "rohr_d": 12.0,        # Drehrohr (hinten gemessen 11,9)
-    "rohr_v": 1.2,         # Drehrohr steht vorne vor
+    "rohr_v": 1.2,         # halbrunder Vorbau oben (und Drehrohr) steht vorne vor
     "rohr_frei": 7.0,      # Drehrohr liegt hinten so lang frei
     "modul_d": 9.0,        # Messinghülse des Lasermoduls – geschätzt
     "wand": 1.5,           # Wand der offenen Unterseite
@@ -67,10 +67,11 @@ def modell() -> tuple[cq.Workplane, cq.Workplane]:
         return cq.Workplane("XY", origin=(0, 0, z0)).center(0, y).circle(r).extrude(z1 - z0)
 
     block = cq.Workplane("XY").box(b, l, za, centered=(True, False, False))
-    bogen = zyl_y(ra, 0, y_frei).intersect(
-        cq.Workplane("XY", origin=(0, 0, za)).box(b, y_frei, ra, centered=(True, False, False)))
+    yv = -h["rohr_v"]                # Halbbogen mit halbrundem Vorbau vor der Stirnseite
+    bogen = zyl_y(ra, yv, y_frei).intersect(
+        cq.Workplane("XY", origin=(0, yv, za)).box(b, y_frei - yv, ra, centered=(True, False, False)))
     fest = block.union(bogen)
-    fest = fest.cut(zyl_y(rr, -1, l + 1))                                   # Bett des Drehrohrs
+    fest = fest.cut(zyl_y(rr, yv - 1, l + 1))                               # Bett des Drehrohrs
     fest = fest.cut(cq.Workplane("XY").box(b - 2 * h["wand"], l - 2 * h["wand"], h["tasche"],
                                            centered=(True, False, False)).translate((0, h["wand"], 0)))
     for d, y in [(h["zu_vorn_d"], h["zu_vorn_rand"] + h["zu_vorn_d"] / 2),
@@ -236,7 +237,7 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
          '<text x="20" y="30" font-size="16" font-weight="bold">Zinkhalter des Lasers aus dem KW-triO 13036</text>',
          f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, Maßstab 7 : 1, Projektionsmethode 3 '
          f'(ISO 5456-2), Hauptansicht = Seitenansicht. Alle Ansichten aus einem 3D-Modell (cad/kwtrio_halter.py).</text>',
-         f'<text x="20" y="72" font-size="13" fill="{MASS}">Verdeckte Kanten gestrichelt. „ca.“ = aus dem Foto geschätzt.</text>']
+         f'<text x="20" y="72" font-size="13" fill="{MASS}">Verdeckte Kanten gestrichelt. „?“ = geschätzt oder widersprüchlich – bitte nachmessen.</text>']
     for ans, blick, rechts in ansichten:
         vis, hid = projektion(ganz, blick, rechts)
         o.append(pfade(ans, hid, verd))
@@ -267,9 +268,10 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     o.append(text(seite, l, za, "Kabel", "start", 12, dx=14, dy=-8))
     o.append(text(seite, y_frei / 2, (hh + za) / 2, "Halbbogen", "middle", 11, dy=4))
     o.append(text(seite, y_frei + h["rohr_frei"] / 2, za + rr / 2, "Drehrohr", "middle", 10, BLAU, dy=4))
-    o.append(text(vorn, rb, za + 6.5, "Halbbogen (fest)", dx=8))
+    o.append(text(vorn, rb, za + 4.5, "Halbbogen mit Vorbau", dx=8))
     o.append(text(vorn, rb, za, f"Drehrohr Ø{zahl(h['rohr_d'])}", dx=8, dy=20, farbe=BLAU))
-    o.append(text(hinten, rb, hebel_top, f"Hebelrohr Ø ca. {zahl(h['hebel_d'])}", dx=8, dy=16))
+    o.append(text(hinten, rb, hebel_top, f"Hebelrohr Ø{zahl(h['hebel_d'])} ?", dx=8, dy=16))
+    o.append(text(vorn, h["zo_d"] / 2, hh + h["zo_h"], f"Zapfen Ø{zahl(h['zo_d'])} ?", dx=8, dy=14))
     o.append(text(hinten, rb, za + rr, "Drehrohr Ø11,9", dx=8, dy=4, farbe=BLAU))
     o.append(text(unten, -h["rohr_v"], 0, "Laser", "end", 11, MASS, dx=-12, dy=-6))
     for yy, d, t, dy in [(yu_v, h["zu_vorn_d"], f"Ø{zahl(h['zu_vorn_d'])} Steckzapfen (Blechloch)", 34),
@@ -285,6 +287,9 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
     o.append(mass_h(seite, 0, yu_v - h["zu_vorn_d"] / 2, -h["zu_h"], zahl(h["zu_vorn_rand"]), 16))
     o.append(mass_h(seite, yu_h + h["zu_hint_d"] / 2, l, -h["zu_h"], zahl(h["zu_hint_rand"]), 16))
     o.append(mass_h(seite, y_frei, l, hebel_top, zahl(h["rohr_frei"]), -14, ref_v=hh))
+    o.append(mass_h(seite, 0, h["zo_y"], hh + h["zo_h"], f"{zahl(h['zo_y'])} ?", -26, ref_v=hh))
+    luecke = (yu_h - h["zu_hint_d"] / 2) - (yu_v + h["zu_vorn_d"] / 2)
+    o.append(mass_h(seite, yu_v + h["zu_vorn_d"] / 2, yu_h - h["zu_hint_d"] / 2, -h["zu_h"], f"{zahl(luecke)} ?", 16))
     o.append(mass_v(seite, za + rr, hebel_top, l, zahl(h["hebel_h"]), 28, ref_u=yh + h["hebel_d"] / 2))
     o.append(mass_v(seite, -h["zu_h"], 0, l, zahl(h["zu_h"]), 28, ref_u=l))
     o.append(mass_v(seite, hh, hh + h["zo_h"], h["zo_y"] - h["zo_d"] / 2, zahl(h["zo_h"]), -14))
@@ -309,10 +314,9 @@ def zeichnung(fest: cq.Workplane, rohr: cq.Workplane) -> str:
              f'stroke-dasharray="10,3,2,3"/>')
     o.append(f'<text x="{px0 + 30}" y="{py0 + 36}" text-anchor="middle" font-size="11" fill="{MASS}">Projektionsmethode 3</text>')
 
-    offen = ["Noch nicht gemessen:",
-             "1  Ø der beiden oberen Zapfen (Madenschraube, Hebelrohr)",
-             "2  Lage des Zapfens mit Madenschraube entlang der Achse",
-             "3  Zapfen unten: Lücke gemessen 4,3, aus den Randabständen 3,0 und 2,9 folgen 6,6 – bitte nachmessen"]
+    offen = ["Bitte nachmessen (in der Zeichnung mit „?“):",
+             "1  Ø der beiden oberen Zapfen (Madenschraube, Hebelrohr) und Lage des Zapfens ab Stirnseite",
+             "2  Lücke zwischen den unteren Zapfen: gemessen 4,3, aus den Randabständen 3,0 und 2,9 folgen 6,6"]
     for k, t in enumerate(offen):
         gewicht = ' font-weight="bold"' if k == 0 else ""
         o.append(f'<text x="20" y="{730 + k * 22}" font-size="13"{gewicht}>{t}</text>')
