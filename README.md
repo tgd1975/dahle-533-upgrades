@@ -65,17 +65,7 @@ Stellschrauben in `cad/masse.toml`, Abschnitt `[asym]`: `luft_nut` (Spiel der st
 
 Gemessen am 2026-11-16 mit dem Messschieber ([Fotos](docs/fotos/)). Querschnitt, Blick entlang der Schiene:
 
-```
-   Tischkante                                   Tischmitte (Papier)
-
-              ┌─────────┐
-              │         │◄─ C ─►┌───────┐ ─┬─        ─┬─
-            E │  außen  │       │ innen │  │ D        │ B
-              │         │───────│       │ ─┴─         │
-  ════════════╧═════════╧═══════╧═══════╧═════════════╧═══  Tisch
-              ◄──────────── 18,0 ───────►
-                                ◄── A ──►
-```
+![Querschnitt der Winkelanlage mit den Maßen A bis E](docs/bilder/winkelanlage_querschnitt.svg)
 
 | | Maß | Wert | Herkunft |
 |---|---|---|---|
@@ -93,6 +83,7 @@ Die Werte stehen in [cad/masse.toml](cad/masse.toml). Nach einer Änderung neu b
 ```bash
 uv run cad/bauen.py 2>&1 | cat      # Modelle (STL, STEP, Bilder)
 druck/projekt.sh                    # Projektdateien für Bambu Studio (ohne G-Code)
+uv run docs/bilder/skizzen.py 2>&1 | cat   # Skizzen (Querschnitt, Laser)
 ```
 
 `bauen.py` prüft die Maßkette und bricht mit einer Meldung ab, wenn z. B. die Zunge zu dünn würde.
@@ -154,7 +145,7 @@ Sie soll ohne Druck hineinfallen und sich entlang der Schiene leicht schieben la
 | [cad/](cad/) | `masse.toml` (alle Maße), `bauen.py` (CadQuery-Modell) |
 | [modelle/](modelle/) | STL (in Drucklage) und STEP |
 | [druck/](druck/) | Projektdateien (3MF, ohne G-Code), `projekt.sh` baut sie, `platten.py` (je Modell eine Platte, Objekteinstellungen), `profile_bauen.py` und `profil/` (ausgeschriebene Systemprofile für die Kommandozeile), `probeslice.py` (Kontrolle) |
-| [docs/](docs/) | Laser-Konzept, Bilder, Fotos der Maschine und der Messungen |
+| [docs/](docs/) | Laser-Konzept, Bilder, Fotos der Maschine und der Messungen; `bilder/skizzen.py` zeichnet die Skizzen |
 
 ## Quellen
 

@@ -12,17 +12,7 @@ entlang der Schnittkante ist keine Schutz- und Anpressleiste montiert – die Li
 Ein Linienlaser spannt eine Lichtebene auf. Liegt die Schnittkante (Kante des Untermessers) in dieser Ebene,
 zeichnet der Laser die Schnittlinie auf das Papier – egal, wo in der Ebene er sitzt.
 
-```
-   Seitenansicht (Blick vom Tisch zum Messer)
-
-      Laser ●  ~70 mm über dem Tisch, ~35° nach unten geneigt
-            │╲ ╲  ╲    ╲
-   Reiter   │ ╲  ╲    ╲      ╲          Lichtfächer 90°
-   auf der  │  ╲   ╲      ╲        ╲
-   hinteren │   ╲    ╲        ╲          ╲
-  ══════════╧════╧═════╧═════════╧═══════════╧════  Schnittkante, 340 mm
-   Winkelanlage (hinten, am Drehpunkt)        vorne (Griff)
-```
+![Seitenansicht: Laser auf einem Reiter an der hinteren Winkelanlage, Lichtfächer auf die Schnittkante](bilder/laser_seitenansicht.svg)
 
 - **Ort:** hinten am Drehpunkt des Messers, auf einem Reiter, der wie der Anschlagschieber mit einer Zunge in der
   Nut der hinteren Winkelanlage sitzt. Der Laser steht wenige Millimeter links der Schnittebene (Tischseite) –
