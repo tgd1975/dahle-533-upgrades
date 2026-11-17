@@ -1,11 +1,13 @@
-# Dahle 533 – Anschlagschieber zum Selberdrucken
+# Dahle 533 Upgrades
 
-Ersatz für den verlorenen Rückanschlag der Hebelschneidemaschine Dahle 533 (Original: „Rückanschlag 613“,
-Dahle 00613-17229), gedruckt aus PETG auf dem Bambu Lab P1P. Dazu ein Konzept für einen nachrüstbaren
-Schnittlinien-Laser: [docs/laser.md](docs/laser.md).
+Selbstgebaute Nachrüstteile für die Hebelschneidemaschine Dahle 533.
 
-**Stand 2026-11-17:** Modell, Passprobe und Projektdateien für Bambu Studio sind fertig und auf die **gemessene** Schiene
-ausgelegt. Vor dem großen Druck die Passprobe drucken (siehe [TODO.md](TODO.md)).
+| Teil | Stand 2026-11-17 |
+|---|---|
+| **Anschlagschieber** – Ersatz für den verlorenen Rückanschlag (Original: „Rückanschlag 613“, Dahle 00613-17229), gedruckt aus PETG auf dem Bambu Lab P1P | Modell, Passprobe und Projektdateien für Bambu Studio sind fertig und auf die **gemessene** Schiene ausgelegt; vor dem großen Druck die Passprobe drucken (siehe [TODO.md](TODO.md)) |
+| **Schnittlinien-Laser** zum Nachrüsten | Konzept, noch kein Druckteil: [docs/laser.md](docs/laser.md) |
+
+Der Rest dieser Seite beschreibt den Anschlagschieber.
 
 ## Wie der Anschlag funktioniert
 
