@@ -54,6 +54,8 @@ entlang der Schnittkante – dieselbe Lage wie im Konzept, nur niedriger.
 
 ![Zinkhalter des KW-triO-Lasers in drei Ansichten](bilder/kwtrio_halter.svg)
 
+![Schraube, Druckfeder und Taster des KW-triO-Lasers](bilder/kwtrio_kleinteile.svg)
+
 Das Modul stammt aus einem Gerät für unter 35 €: Linienqualität und Leistung sind ohne Datenblatt (L-7). Die
 Klassenangabe eines Billiggeräts ist nicht verlässlich – die Auslegung mit Fächer nur auf den Tisch und Blende hält
 auch ein stärkeres Modul unter Augenhöhe.
@@ -78,7 +80,7 @@ Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf
 | L-1 (Streifen hinter der Schiene) | Breite der blauen Tischfläche zwischen hinterer Winkelanlage und Tischkante | Platz für die Haltemagnete des Reiters |
 | L-2 (Lagerbock) | Höhe und Breite des grauen Lagerbocks am Drehpunkt, über dem Tisch | Laser muss darüber hinwegsehen |
 | L-3 (Schienenende) | Abstand vom messerseitigen Ende der hinteren Winkelanlage zur Schnittkante | Länge des Auslegers |
-| L-6 (Zinkhalter) | Außenmaße stehen in der Zeichnung. Es fehlen: Gewinde in den Zapfen (Schraube: Gewinde-Ø und Länge); Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite; Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring); Druckfeder (Außen-Ø, Länge entspannt) | Anschraubfläche und Stellschrauben am Reiter |
+| L-6 (Zinkhalter) | Außenmaße, Schraube, Feder und Taster stehen in den Zeichnungen. Es fehlen: Gewinde-Ø der Schraube (vermutlich M3); Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite; Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) | Anschraubfläche und Stellschrauben am Reiter |
 | L-7 (Linie) | Laser an 2 × AAA (rot an Plus), auf den Tisch richten: Dicke der Linie nah und in etwa 35 cm, gut sichtbar bei Raumlicht? | entscheidet zwischen KW-triO-Modul und Picotronic |
 | L-8 (Fächerwinkel) | Laser 100 mm über dem Tisch senkrecht nach unten halten, Länge der Linie messen | Neigung und Höhe am Reiter |
 

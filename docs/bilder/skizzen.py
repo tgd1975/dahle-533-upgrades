@@ -7,6 +7,7 @@
 - winkelanlage_querschnitt.svg – Querschnitt der Winkelanlage mit den Maßen A–E aus cad/masse.toml, maßstäblich
 - laser_seitenansicht.svg      – Seitenansicht des Laser-Konzepts (docs/laser.md), maßstäblich
 - kwtrio_halter.svg            – Zinkhalter des KW-triO-Lasers in drei Ansichten, aus HALTER
+- kwtrio_kleinteile.svg        – Schraube, Feder und Taster des KW-triO-Lasers, aus KLEIN
 
 Aufruf im Repo-Wurzelverzeichnis:  uv run docs/bilder/skizzen.py 2>&1 | cat
 """
@@ -314,10 +315,9 @@ def halter() -> str:
     # --- Legende: was fehlt
     fehl = [
         "Für den Halter am Reiter fehlen noch:",
-        "1  Gewinde in den Zapfen (Schraube mit Messschieber: Gewinde-Ø und Länge)",
+        "1  Gewinde-Ø der Schraube (vermutlich M3) – siehe kwtrio_kleinteile.svg",
         "2  Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite",
         "3  Strahlachse über der Unterseite (Messschieber-Tiefenmaß von unten bis Ring-Mitte) – gerechnet sind 11,4",
-        "4  Druckfeder: Außen-Ø, Länge entspannt",
     ]
     for i, t in enumerate(fehl):
         o.append(f'<text x="20" y="{700 + i*22}" font-size="13" {"font-weight=\"bold\"" if i == 0 else ""}>{t}</text>')
@@ -325,8 +325,87 @@ def halter() -> str:
     return "\n".join(o)
 
 
+# Kleinteile des KW-triO-Lasers, gemessen mit dem Messschieber; "≈" = aus dem Foto geschätzt.
+KLEIN = {
+    "schraube_kopf_d": 7.0,   # Bund, gemessen
+    "schraube_l_ges": 10.0,   # mit Kopf, gemessen
+    "schraube_kopf_h": 2.0,   # geschätzt
+    "schraube_d": 3.0,        # geschätzt, vermutlich M3
+    "feder_da": 7.6,          # gemessen
+    "feder_l": 5.2,           # entspannt, gemessen
+    "feder_draht": 0.8,       # geschätzt
+    "taster_b": 8.3, "taster_t": 8.4,  # Gehäuse, gemessen
+    "taster_kappe_d": 7.9,    # gemessen, Zuordnung unsicher
+    "taster_kappe_h": 4.0, "taster_l": 9.0, "pin_l": 3.0,  # geschätzt
+}
+
+
+def kleinteile() -> str:
+    k = KLEIN
+    s = 12.0
+    o = kopf(1100, 520, "Kleinteile des KW-triO-Lasers")
+    o.append('<text x="20" y="30" font-size="16" font-weight="bold">Schraube, Feder und Taster aus dem KW-triO 13036</text>')
+    o.append(f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, gemessen mit dem Messschieber; „ca.“ = aus dem Foto geschätzt, „?“ = Zuordnung unsicher. Maßstab 12 : 1.</text>')
+    stil = f'fill="#e4e4e4" stroke="{LINIE}" stroke-width="1.6"'
+
+    # Schraube, Seitenansicht: Kopf oben
+    cx, yk = 150.0, 130.0
+    kd, kh, d = k["schraube_kopf_d"], k["schraube_kopf_h"], k["schraube_d"]
+    l = k["schraube_l_ges"] - kh
+    o.append(f'<text x="{cx}" y="100" text-anchor="middle" font-weight="bold">Schraube</text>')
+    o.append(f'<path d="M{cx - kd/2*s},{yk + kh*s} Q{cx - kd/2*s},{yk} {cx},{yk} Q{cx + kd/2*s},{yk} {cx + kd/2*s},{yk + kh*s} Z" {stil}/>')
+    o.append(f'<rect x="{cx - d/2*s}" y="{yk + kh*s}" width="{d*s}" height="{l*s}" {stil}/>')
+    for i in range(1, int(l / 0.5)):
+        y = yk + kh*s + i * 0.5 * s
+        o.append(f'<line x1="{cx - d/2*s}" y1="{y}" x2="{cx + d/2*s}" y2="{y + 3}" stroke="{LINIE}" stroke-width="0.6"/>')
+    o.append(mass_h(cx - kd/2*s, cx + kd/2*s, yk - 10, f"Ø{zahl(kd)}"))
+    o.append(hilfslinie(cx + kd/2*s, yk, cx + kd/2*s + 24, yk))
+    o.append(mass_v(cx + kd/2*s + 20, yk, yk + (kh + l)*s, f"{zahl(k['schraube_l_ges'])} gesamt"))
+    o.append(hilfslinie(cx + d/2*s, yk + (kh + l)*s, cx + kd/2*s + 24, yk + (kh + l)*s))
+    o.append(mass_h(cx - d/2*s, cx + d/2*s, yk + (kh + l)*s + 30, f"M{zahl(d).replace(',0', '')} ?", oben=False))
+    o.append(f'<text x="{cx}" y="{yk + (kh + l)*s + 80}" text-anchor="middle" font-size="12">Linsenkopf mit Bund, Kreuzschlitz</text>')
+
+    # Feder: Seitenansicht und Draufsicht
+    fx0, fy0 = 470.0, 150.0
+    da, fl, dr = k["feder_da"], k["feder_l"], k["feder_draht"]
+    di = da - 2 * dr
+    o.append(f'<text x="{fx0}" y="100" text-anchor="middle" font-weight="bold">Druckfeder</text>')
+    wind = 3
+    for i in range(wind):
+        y = fy0 + (i + 0.5) * fl / wind * s
+        o.append(f'<line x1="{fx0 - da/2*s + dr/2*s}" y1="{y - dr/2*s}" x2="{fx0 + da/2*s - dr/2*s}" y2="{y + dr/2*s}" stroke="{LINIE}" stroke-width="{dr*s*0.8}" stroke-linecap="round"/>')
+    o.append(mass_h(fx0 - da/2*s, fx0 + da/2*s, fy0 - 10, f"Ø{zahl(da)} außen"))
+    o.append(mass_v(fx0 + da/2*s + 20, fy0, fy0 + fl*s, f"{zahl(fl)} entspannt"))
+    fy1 = fy0 + fl*s + 150
+    o.append(f'<circle cx="{fx0}" cy="{fy1}" r="{(da + di)/4*s}" fill="none" stroke="{LINIE}" stroke-width="{dr*s}"/>')
+    o.append(mass_h(fx0 - di/2*s, fx0 + di/2*s, fy1, "", oben=False))
+    o.append(f'<text x="{fx0 + da/2*s + 12}" y="{fy1 + 5}" font-size="12">ca. Ø{zahl(di)} innen</text>')
+    o.append(f'<text x="{fx0}" y="{fy1 + da/2*s + 28}" text-anchor="middle" font-size="12">3 Windungen; sitzt vermutlich auf dem Zapfen Ø5,7</text>')
+
+    # Taster: Seitenansicht
+    tx0, ty0 = 800.0, 140.0
+    kd2, kh2, tb, tl, pl = k["taster_kappe_d"], k["taster_kappe_h"], k["taster_b"], k["taster_l"], k["pin_l"]
+    tt = k["taster_t"]
+    o.append(f'<text x="{tx0 + 60}" y="100" text-anchor="middle" font-weight="bold">Taster, 6 Pins</text>')
+    o.append(f'<rect x="{tx0 - kd2/2*s}" y="{ty0}" width="{kd2*s}" height="{kh2*s}" rx="6" fill="#d62728" stroke="{LINIE}" stroke-width="1.6"/>')
+    o.append(f'<rect x="{tx0 - tb/2*s}" y="{ty0 + kh2*s}" width="{tb*s}" height="{tl*0.55*s}" fill="#c8c8c8" stroke="{LINIE}" stroke-width="1.6"/>')
+    o.append(f'<rect x="{tx0 - tb/2*s}" y="{ty0 + (kh2 + tl*0.55)*s}" width="{tb*s}" height="{tl*0.45*s}" fill="#333" stroke="{LINIE}" stroke-width="1.6"/>')
+    for x in (-3.0, 0.0, 3.0):
+        o.append(f'<rect x="{tx0 + x*s - 3}" y="{ty0 + (kh2 + tl)*s}" width="6" height="{pl*s}" fill="#b08d3c" stroke="{LINIE}"/>')
+    o.append(mass_h(tx0 - kd2/2*s, tx0 + kd2/2*s, ty0 - 10, f"Ø{zahl(kd2)} ?"))
+    o.append(mass_h(tx0 - tb/2*s, tx0 + tb/2*s, ty0 + (kh2 + tl + pl)*s + 30, f"{zahl(tb)} × {zahl(tt)}", oben=False))
+    xr = tx0 + tb/2*s + 20
+    o.append(hilfslinie(tx0 + kd2/2*s, ty0, xr + 4, ty0))
+    o.append(hilfslinie(tx0 + tb/2*s, ty0 + (kh2 + tl)*s, xr + 4, ty0 + (kh2 + tl)*s))
+    o.append(mass_v(xr, ty0, ty0 + (kh2 + tl)*s, f"ca. {zahl(kh2 + tl)}"))
+    o.append(f'<text x="{tx0}" y="{ty0 + (kh2 + tl + pl)*s + 80}" text-anchor="middle" font-size="12">2 × 3 Pins: vermutlich Rastschalter 8 × 8 (2 × Umschalter)</text>')
+    o.append("</svg>")
+    return "\n".join(o)
+
+
 if __name__ == "__main__":
     for name, svg in [("winkelanlage_querschnitt.svg", querschnitt()), ("laser_seitenansicht.svg", laser()),
-                      ("kwtrio_halter.svg", halter())]:
+                      ("kwtrio_halter.svg", halter()),
+                      ("kwtrio_kleinteile.svg", kleinteile())]:
         (HIER / name).write_text(svg + "\n", encoding="utf-8")
         print("geschrieben:", HIER / name)
