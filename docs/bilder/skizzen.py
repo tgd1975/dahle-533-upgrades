@@ -6,6 +6,7 @@
 
 - winkelanlage_querschnitt.svg – Querschnitt der Winkelanlage mit den Maßen A–E aus cad/masse.toml, maßstäblich
 - laser_seitenansicht.svg      – Seitenansicht des Laser-Konzepts (docs/laser.md), maßstäblich
+- kwtrio_halter.svg            – Zinkhalter des KW-triO-Lasers in drei Ansichten, aus HALTER
 
 Aufruf im Repo-Wurzelverzeichnis:  uv run docs/bilder/skizzen.py 2>&1 | cat
 """
@@ -189,7 +190,143 @@ def laser() -> str:
     return "\n".join(o)
 
 
+# Zinkhalter des KW-triO-Lasers, gemessen mit dem Messschieber. "?" = aus dem Foto nicht sicher zuzuordnen.
+HALTER = {
+    "breite": 15.5,       # Stirnseite, quer
+    "hoehe": 19.1,        # Unterseite bis Scheitel des Bogens, ohne Zapfen
+    "laenge": 22.7,       # Körper
+    "laenge_ges": 24.0,   # mit vorstehendem Ring
+    "ring_d": 12.0,       # Drehring vorne
+    "hinten_d": 11.9,     # runder Teil hinten
+    "stufe": 1.2,         # Ring steht über den Körper vor
+    "wand": 1.5,          # Wand der offenen Unterseite
+    "zapfen_d": 4.5,      # Zapfen mit Madenschraube
+    "zapfen2_d": 5.7,     # Zapfen mit Gewinde (Befestigung?)
+    "luecke": 4.3,        # Lücke zwischen den Zapfen unten
+    "zapfen_unten": 4.2,  # Zapfen steht unten vor
+    "zapfen_oben": 6.4,   # langer Zapfen oben (Drehring?)
+    "zapfen_oben2": 3.7,  # kurzer Zapfen oben
+    "tasche": 3.1,        # Tiefe der offenen Unterseite (3,1 / 3,2)
+}
+
+
+def halter() -> str:
+    h = HALTER
+    s = 9.0  # px je mm
+    b, hh, l = h["breite"], h["hoehe"], h["laenge"]
+    r_bogen = b / 2
+    achse = hh - r_bogen  # Strahlachse über der Unterseite, unter der Annahme: Bogen konzentrisch zum Ring
+    o = kopf(1200, 820, "Zinkhalter des KW-triO-Lasers, drei Ansichten")
+    o.append(f'<text x="20" y="30" font-size="16" font-weight="bold">Zinkhalter des Lasers aus dem KW-triO 13036</text>')
+    o.append(f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, gemessen mit dem Messschieber, Maßstab 9 : 1. '
+             f'„?“ = Zuordnung aus dem Foto unsicher. Lage der Zapfen entlang des Körpers geschätzt, nicht gemessen.</text>')
+    stil = f'fill="#e4e4e4" stroke="{LINIE}" stroke-width="1.6"'
+
+    # --- Vorderansicht (Blick auf die Optik), Unterseite unten
+    cx, y0 = 170.0, 430.0
+    def fx(x): return cx + x * s
+    def fy(z): return y0 - z * s
+    pfad = (f"M{fx(-b/2)},{fy(0)} L{fx(-b/2)},{fy(achse)} A{r_bogen*s},{r_bogen*s} 0 0 1 {fx(b/2)},{fy(achse)} "
+            f"L{fx(b/2)},{fy(0)} Z")
+    zd, zu = h["zapfen_d"], h["zapfen_unten"]
+    o.append(f'<rect x="{fx(-zd/2)}" y="{fy(hh) - h["zapfen_oben"]*s}" width="{zd*s}" height="{h["zapfen_oben"]*s + 4}" {stil}/>')
+    o.append(f'<rect x="{fx(-zd/2)}" y="{fy(0) - 4}" width="{zd*s}" height="{zu*s + 4}" {stil}/>')
+    o.append(f'<path d="{pfad}" {stil}/>')
+    o.append(f'<circle cx="{fx(0)}" cy="{fy(achse)}" r="{h["ring_d"]/2*s}" fill="#d0d0d0" stroke="{LINIE}" stroke-width="1.4"/>')
+    o.append(f'<circle cx="{fx(0)}" cy="{fy(achse)}" r="{4.5*s}" fill="#d9b44a" stroke="{LINIE}"/>')
+    o.append(f'<line x1="{fx(-3)}" y1="{fy(achse)+2.6*s}" x2="{fx(3)}" y2="{fy(achse)-2.6*s}" stroke="{ROT}" stroke-width="2"/>')
+    o.append(f'<line x1="{fx(-b/2-3)}" y1="{fy(achse)}" x2="{fx(b/2+3)}" y2="{fy(achse)}" stroke="{MASS}" stroke-dasharray="8,3,2,3"/>')
+    o.append(f'<text x="{cx}" y="{fy(hh) - h["zapfen_oben"]*s - 30}" text-anchor="middle" font-weight="bold">Vorderansicht (Optik)</text>')
+    o.append(mass_h(fx(-b/2), fx(b/2), fy(0) + zu*s + 30, f"{zahl(b)}", oben=False))
+    o.append(hilfslinie(fx(-b/2), fy(0), fx(-b/2), fy(0) + zu*s + 34))
+    o.append(hilfslinie(fx(b/2), fy(0), fx(b/2), fy(0) + zu*s + 34))
+    o.append(hilfslinie(fx(0), fy(hh), fx(-b/2 - 5), fy(hh)))
+    o.append(mass_v(fx(-b/2 - 4), fy(0), fy(hh), f"{zahl(hh)}", links=True))
+    o.append(hilfslinie(fx(b/2), fy(achse), fx(b/2 + 5), fy(achse)))
+    o.append(mass_v(fx(b/2 + 4), fy(0), fy(achse), f"{zahl(achse)} ?"))
+    o.append(f'<text x="{fx(b/2 + 5)}" y="{fy(achse/2) + 22}" font-size="11" fill="{MASS}">Strahlachse, gerechnet</text>')
+    o.append(f'<text x="{fx(h["ring_d"]/2) + 6}" y="{fy(achse + 5.2)}" font-size="12">Drehring Ø{zahl(h["ring_d"])}</text>')
+    o.append(f'<text x="{fx(zd/2) + 6}" y="{fy(hh) - h["zapfen_oben"]*s + 14}" font-size="12">Zapfen Ø{zahl(zd)} ?</text>')
+    o.append(f'<text x="{fx(zd/2) + 6}" y="{fy(0) + zu*s - 4}" font-size="12">Zapfen</text>')
+
+    # --- Seitenansicht (Strahl nach links), Unterseite unten
+    sx0, sy0 = 470.0, 430.0
+    def gx(x): return sx0 + x * s
+    def gy(z): return sy0 - z * s
+    st = h["stufe"]
+    pos_o = [0.25 * l, 0.82 * l]  # geschätzt
+    pos_u = [0.30 * l, 0.75 * l]  # geschätzt
+    for x, hoch in zip(pos_o, [h["zapfen_oben2"], h["zapfen_oben"]]):
+        o.append(f'<rect x="{gx(st + x) - zd/2*s}" y="{gy(hh) - hoch*s}" width="{zd*s}" height="{hoch*s + 4}" {stil}/>')
+    for x, d in zip(pos_u, [h["zapfen_d"], h["zapfen2_d"]]):
+        o.append(f'<rect x="{gx(st + x) - d/2*s}" y="{gy(0) - 4}" width="{d*s}" height="{zu*s + 4}" {stil}/>')
+    o.append(f'<rect x="{gx(st)}" y="{gy(hh)}" width="{l*s}" height="{hh*s}" {stil}/>')
+    o.append(f'<rect x="{gx(0)}" y="{gy(achse + h["ring_d"]/2)}" width="{st*s + 2}" height="{h["ring_d"]*s}" fill="#d0d0d0" stroke="{LINIE}" stroke-width="1.4"/>')
+    o.append(f'<line x1="{gx(-6)}" y1="{gy(achse)}" x2="{gx(st + l + 6)}" y2="{gy(achse)}" stroke="{MASS}" stroke-dasharray="8,3,2,3"/>')
+    o.append(f'<line x1="{gx(-12)}" y1="{gy(achse)}" x2="{gx(-2)}" y2="{gy(achse)}" stroke="{ROT}" stroke-width="3"/>')
+    o.append(f'<text x="{gx(st + l/2)}" y="{gy(hh) - h["zapfen_oben"]*s - 30}" text-anchor="middle" font-weight="bold">Seitenansicht</text>')
+    o.append(f'<text x="{gx(st + l + 2)}" y="{gy(achse) - 8}" font-size="12">Kabel</text>')
+    o.append(f'<text x="{gx(-14)}" y="{gy(achse) - 8}" font-size="12" text-anchor="end" fill="{ROT}">Strahl</text>')
+    yl = gy(0) + zu*s + 30
+    o.append(hilfslinie(gx(st), gy(0), gx(st), yl + 4))
+    o.append(hilfslinie(gx(st + l), gy(0), gx(st + l), yl + 40))
+    o.append(mass_h(gx(st), gx(st + l), yl, f"{zahl(l)}", oben=False))
+    o.append(hilfslinie(gx(0), gy(achse - h["ring_d"]/2), gx(0), yl + 40))
+    o.append(mass_h(gx(0), gx(st + l), yl + 36, f"{zahl(h['laenge_ges'])} gesamt ?", oben=False))
+    o.append(f'<text x="{gx(0)}" y="{gy(achse + h["ring_d"]/2) - 8}" font-size="12" text-anchor="middle">{zahl(st)}</text>')
+    xo = gx(st + pos_o[1]) + zd/2*s
+    o.append(hilfslinie(xo, gy(hh) - h["zapfen_oben"]*s, xo + 30, gy(hh) - h["zapfen_oben"]*s))
+    o.append(mass_v(xo + 26, gy(hh), gy(hh) - h["zapfen_oben"]*s, f"{zahl(h['zapfen_oben'])} ?"))
+    xo2 = gx(st + pos_o[0]) - zd/2*s
+    o.append(hilfslinie(xo2, gy(hh) - h["zapfen_oben2"]*s, xo2 - 30, gy(hh) - h["zapfen_oben2"]*s))
+    o.append(mass_v(xo2 - 26, gy(hh), gy(hh) - h["zapfen_oben2"]*s, f"{zahl(h['zapfen_oben2'])} ?", links=True))
+    xu = gx(st + pos_u[1]) + h["zapfen2_d"]/2*s
+    o.append(hilfslinie(xu, gy(0) + zu*s, xu + 30, gy(0) + zu*s))
+    o.append(mass_v(xu + 26, gy(0), gy(0) + zu*s, f"{zahl(zu)}"))
+
+    # --- Untenansicht (offene Unterseite)
+    ux0, uy0 = 820.0, 300.0
+    def ux(x): return ux0 + x * s
+    def uy(y): return uy0 + y * s
+    w = h["wand"]
+    o.append(f'<text x="{ux(l/2)}" y="{uy(-b/2) - 30}" text-anchor="middle" font-weight="bold">Untenansicht (offen)</text>')
+    o.append(f'<rect x="{ux(0)}" y="{uy(-b/2)}" width="{l*s}" height="{b*s}" {stil}/>')
+    o.append(f'<rect x="{ux(w)}" y="{uy(-b/2 + w)}" width="{(l - 2*w)*s}" height="{(b - 2*w)*s}" fill="#9a9a9a" stroke="{LINIE}"/>')
+    d1, d2, gap = h["zapfen_d"], h["zapfen2_d"], h["luecke"]
+    xm = l / 2
+    x1 = xm - (gap / 2 + d1 / 2)
+    x2 = xm + (gap / 2 + d2 / 2)
+    for x, d, art, dy in [(x1, d1, "Madenschraube", 22), (x2, d2, "Gewinde", 40)]:
+        o.append(f'<circle cx="{ux(x)}" cy="{uy(0)}" r="{d/2*s}" fill="#e4e4e4" stroke="{LINIE}" stroke-width="1.4"/>')
+        o.append(f'<circle cx="{ux(x)}" cy="{uy(0)}" r="{1.3*s}" fill="#444"/>')
+        o.append(f'<line x1="{ux(x)}" y1="{uy(d/2)}" x2="{ux(x)}" y2="{uy(b/2) + dy - 12}" stroke="{MASS}" stroke-width="0.8"/>')
+        o.append(f'<text x="{ux(x)}" y="{uy(b/2) + dy}" text-anchor="middle" font-size="12">Ø{zahl(d)} {art}</text>')
+    o.append(mass_h(ux(x1 + d1/2), ux(x2 - d2/2), uy(-d2/2) - 10, f"{zahl(gap)} ?"))
+    o.append(mass_h(ux(0), ux(l), uy(b/2) + 76, f"{zahl(l)}", oben=False))
+    o.append(hilfslinie(ux(0), uy(b/2), ux(0), uy(b/2) + 80))
+    o.append(hilfslinie(ux(l), uy(b/2), ux(l), uy(b/2) + 80))
+    o.append(hilfslinie(ux(l), uy(-b/2), ux(l) + 34, uy(-b/2)))
+    o.append(hilfslinie(ux(l), uy(b/2), ux(l) + 34, uy(b/2)))
+    o.append(mass_v(ux(l) + 30, uy(-b/2), uy(b/2), f"{zahl(b)}"))
+    o.append(f'<text x="{ux(0)}" y="{uy(-b/2) - 8}" font-size="12">Wand {zahl(w)}, Tiefe {zahl(h["tasche"])}–3,2 ?</text>')
+    o.append(f'<text x="{ux(-1)}" y="{uy(0) + 4}" font-size="12" text-anchor="end">Optik</text>')
+
+    # --- Legende: was fehlt
+    fehl = [
+        "Für den Halter am Reiter fehlen noch:",
+        "1  Gewinde in den Zapfen (Schraube mit Messschieber: Gewinde-Ø und Länge)",
+        "2  Mittenabstand der beiden Zapfen unten und Abstand zur Stirnseite",
+        "3  Strahlachse über der Unterseite (Messschieber-Tiefenmaß von unten bis Ring-Mitte) – gerechnet sind 11,4",
+        "4  Druckfeder: Außen-Ø, Länge entspannt",
+    ]
+    for i, t in enumerate(fehl):
+        o.append(f'<text x="20" y="{700 + i*22}" font-size="13" {"font-weight=\"bold\"" if i == 0 else ""}>{t}</text>')
+    o.append("</svg>")
+    return "\n".join(o)
+
+
 if __name__ == "__main__":
-    for name, svg in [("winkelanlage_querschnitt.svg", querschnitt()), ("laser_seitenansicht.svg", laser())]:
+    for name, svg in [("winkelanlage_querschnitt.svg", querschnitt()), ("laser_seitenansicht.svg", laser()),
+                      ("kwtrio_halter.svg", halter())]:
         (HIER / name).write_text(svg + "\n", encoding="utf-8")
         print("geschrieben:", HIER / name)
