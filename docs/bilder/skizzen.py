@@ -232,16 +232,16 @@ def halter() -> str:
     dreh = f'fill="#cfd8e3" stroke="{LINIE}" stroke-width="1.5"'
     mitte = f'stroke="{MASS}" stroke-width="0.8" stroke-dasharray="10,3,2,3"'
 
-    o = kopf(1120, 960, "Zinkhalter des KW-triO-Lasers, Ansichten nach Projektionsmethode 1")
+    o = kopf(1080, 790, "Zinkhalter des KW-triO-Lasers, Ansichten nach Projektionsmethode 3")
     o.append('<text x="20" y="30" font-size="16" font-weight="bold">Zinkhalter des Lasers aus dem KW-triO 13036</text>')
-    o.append(f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, Maßstab 7 : 1, Projektionsmethode 1 (ISO 5456-2). '
-             f'Blau = drehbares Teil. „?“ = nicht gemessen oder Zuordnung unsicher, „ca.“ = aus dem Foto geschätzt.</text>')
+    o.append(f'<text x="20" y="52" font-size="13" fill="{MASS}">Maße in mm, Maßstab 7 : 1, Projektionsmethode 3 (ISO 5456-2), Hauptansicht = Seitenansicht.</text>')
+    o.append(f'<text x="20" y="72" font-size="13" fill="{MASS}">Blau = drehbares Teil. „?“ = nicht gemessen oder Zuordnung unsicher, „ca.“ = aus dem Foto geschätzt.</text>')
 
     # ---------- A: Vorderansicht (Laser) ----------
-    ax, az = 250.0, 600.0           # Mitte x, Unterseite z=0
+    ax, az = 250.0, 340.0           # Mitte x, Unterseite z=0
     def AX(x): return ax + x * s
     def AZ(z): return az - z * s
-    o.append(f'<text x="{ax}" y="{AZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">A  Vorderansicht (Laser)</text>')
+    o.append(f'<text x="{ax}" y="{AZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">Ansicht von vorn (Laser)</text>')
     o.append(f'<rect x="{AX(-h["hebel_d"]/2)}" y="{AZ(dz_top + h["hebel_h"])}" width="{h["hebel_d"]*s}" height="{(h["hebel_h"] + 1)*s}" {dreh}/>')
     o.append(f'<rect x="{AX(-h["zo_kurz_d"]/2)}" y="{AZ(hh + h["zo_kurz_h"])}" width="{h["zo_kurz_d"]*s}" height="{(h["zo_kurz_h"] + 1)*s}" {fest}/>')
     o.append(f'<rect x="{AX(-h["zu_vorn_d"]/2)}" y="{AZ(0) - 2}" width="{h["zu_vorn_d"]*s}" height="{h["zu_h"]*s + 2}" {fest}/>')
@@ -268,7 +268,7 @@ def halter() -> str:
     cx0, cz = 450.0, az
     def CY(y): return cx0 + (y + h["ring_v"]) * s     # Laser links, Kabel rechts
     def CZ(z): return cz - z * s
-    o.append(f'<text x="{CY(l/2)}" y="{CZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">C  Ansicht von links</text>')
+    o.append(f'<text x="{CY(l/2)}" y="{CZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">Seitenansicht (Hauptansicht)</text>')
     o.append(f'<rect x="{CY(yo_k) - h["zo_kurz_d"]/2*s}" y="{CZ(hh + h["zo_kurz_h"])}" width="{h["zo_kurz_d"]*s}" height="{(h["zo_kurz_h"] + 1)*s}" {fest}/>')
     o.append(f'<rect x="{CY(yo_h) - h["hebel_d"]/2*s}" y="{CZ(dz_top + h["hebel_h"])}" width="{h["hebel_d"]*s}" height="{(h["hebel_h"] + 1)*s}" {dreh}/>')
     for yy, d in [(yu_v, h["zu_vorn_d"]), (yu_h, h["zu_hint_d"])]:
@@ -306,7 +306,7 @@ def halter() -> str:
     fx, fz = 850.0, az
     def FX(x): return fx - x * s      # gespiegelt, symmetrisch
     def FZ(z): return fz - z * s
-    o.append(f'<text x="{fx}" y="{FZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">F  Rückansicht (Hebel)</text>')
+    o.append(f'<text x="{fx}" y="{FZ(h["hebel_h"] + dz_top) - 34}" text-anchor="middle" font-weight="bold">Ansicht von hinten (Hebel)</text>')
     o.append(f'<rect x="{FX(h["zo_kurz_d"]/2)}" y="{FZ(hh + h["zo_kurz_h"])}" width="{h["zo_kurz_d"]*s}" height="{(h["zo_kurz_h"] + 1)*s}" {fest}/>')
     o.append(f'<path d="M{FX(-rb)},{FZ(za)} A{rb*s},{rb*s} 0 0 1 {FX(rb)},{FZ(za)} Z" {fest}/>')
     o.append(f'<rect x="{FX(h["zu_hint_d"]/2)}" y="{FZ(0) - 2}" width="{h["zu_hint_d"]*s}" height="{h["zu_h"]*s + 2}" {fest}/>')
@@ -324,34 +324,34 @@ def halter() -> str:
     o.append(hilfslinie(FX(rb), FZ(0), FX(rb), yf + 4)); o.append(hilfslinie(FX(-rb), FZ(0), FX(-rb), yf + 4))
     o.append(mass_h(FX(rb), FX(-rb), yf, zahl(b), oben=False))
 
-    # ---------- E: Untersicht, über A ----------
-    ex, ey0 = ax, AZ(dz_top + h["hebel_h"]) - 90     # y=0 (Stirnseite) unten, nahe A
-    def EX(x): return ex + x * s
-    def EY(y): return ey0 - y * s
+    # ---------- Untersicht, unter der Hauptansicht ----------
+    ez = CZ(-h["zu_h"]) + 26 + 36 + 70 + rb * s       # Mittellinie (x = 0)
+    def EZ(x): return ez + x * s
     w = h["wand"]
-    o.append(f'<text x="{ex}" y="{EY(l) - 18}" text-anchor="middle" font-weight="bold">E  Untersicht</text>')
-    o.append(f'<rect x="{EX(-h["ring_d"]/2)}" y="{EY(0)}" width="{h["ring_d"]*s}" height="{h["ring_v"]*s}" fill="#d6d6d6" stroke="{LINIE}" stroke-width="1.3"/>')
-    o.append(f'<rect x="{EX(-rb)}" y="{EY(l)}" width="{b*s}" height="{l*s}" {fest}/>')
-    o.append(f'<rect x="{EX(-rb + w)}" y="{EY(l - w)}" width="{(b - 2*w)*s}" height="{(l - 2*w)*s}" fill="#a8a8a8" stroke="{LINIE}"/>')
-    for yy, d, art in [(yu_v, h["zu_vorn_d"], "Steckzapfen (Blechloch)"), (yu_h, h["zu_hint_d"], "M3, Schraube mit Feder")]:
-        o.append(f'<circle cx="{EX(0)}" cy="{EY(yy)}" r="{d/2*s}" {fest}/>')
-        o.append(f'<circle cx="{EX(0)}" cy="{EY(yy)}" r="{1.3*s}" fill="#444"/>')
-        o.append(f'<text x="{EX(rb) + 30}" y="{EY(yy) + 4}" font-size="12">Ø{zahl(d)} {art}</text>')
-        o.append(f'<line x1="{EX(d/2) + 2}" y1="{EY(yy)}" x2="{EX(rb) + 26}" y2="{EY(yy)}" stroke="{MASS}" stroke-width="0.8"/>')
-    o.append(f'<line x1="{EX(0)}" y1="{EY(-h["ring_v"]) + 6}" x2="{EX(0)}" y2="{EY(l) - 6}" {mitte}/>')
-    xe = EX(-rb) - 22
-    o.append(hilfslinie(EX(-rb), EY(0), xe - 4, EY(0))); o.append(hilfslinie(EX(-rb), EY(l), xe - 4, EY(l)))
-    o.append(mass_v(xe, EY(0), EY(l), zahl(l), links=True))
-    o.append(f'<text x="{EX(-rb + w) + 3}" y="{EY(l - w) + 14}" font-size="11">Wand {zahl(w)}</text>')
-    o.append(f'<text x="{EX(0)}" y="{EY(-h["ring_v"]) + 16}" text-anchor="middle" font-size="11" fill="{MASS}">Laser</text>')
+    o.append(f'<text x="{CY(l/2)}" y="{EZ(-rb) - 14}" text-anchor="middle" font-weight="bold">Untersicht</text>')
+    o.append(f'<rect x="{CY(-h["ring_v"])}" y="{EZ(-h["ring_d"]/2)}" width="{h["ring_v"]*s}" height="{h["ring_d"]*s}" fill="#d6d6d6" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<rect x="{CY(0)}" y="{EZ(-rb)}" width="{l*s}" height="{b*s}" {fest}/>')
+    o.append(f'<rect x="{CY(w)}" y="{EZ(-rb + w)}" width="{(l - 2*w)*s}" height="{(b - 2*w)*s}" fill="#a8a8a8" stroke="{LINIE}"/>')
+    for yy, d, art, dy in [(yu_v, h["zu_vorn_d"], "Ø5,7 Steckzapfen (Blechloch)", 34), (yu_h, h["zu_hint_d"], "Ø4,5 M3, Schraube mit Feder", 56)]:
+        o.append(f'<circle cx="{CY(yy)}" cy="{EZ(0)}" r="{d/2*s}" {fest}/>')
+        o.append(f'<circle cx="{CY(yy)}" cy="{EZ(0)}" r="{1.3*s}" fill="#444"/>')
+        o.append(f'<line x1="{CY(yy)}" y1="{EZ(d/2) + 2}" x2="{CY(yy)}" y2="{EZ(rb) + dy - 12}" stroke="{MASS}" stroke-width="0.8"/>')
+        o.append(f'<text x="{CY(yy)}" y="{EZ(rb) + dy}" text-anchor="middle" font-size="12">{art}</text>')
+    o.append(f'<line x1="{CY(-h["ring_v"]) - 10}" y1="{EZ(0)}" x2="{CY(l) + 10}" y2="{EZ(0)}" {mitte}/>')
+    xe = CY(l) + 26
+    o.append(hilfslinie(CY(l), EZ(-rb), xe + 4, EZ(-rb))); o.append(hilfslinie(CY(l), EZ(rb), xe + 4, EZ(rb)))
+    o.append(mass_v(xe, EZ(-rb), EZ(rb), zahl(b)))
+    o.append(f'<text x="{CY(w) + 3}" y="{EZ(-rb + w) + 14}" font-size="11">Wand {zahl(w)}</text>')
+    o.append(f'<text x="{CY(-h["ring_v"]) - 16}" y="{EZ(0) - 6}" text-anchor="end" font-size="11" fill="{MASS}">Laser</text>')
 
-    # ---------- Symbol Projektionsmethode 1 ----------
-    px0, py0 = 960.0, 880.0
-    o.append(f'<path d="M{px0},{py0 - 8} L{px0 + 40},{py0 - 16} L{px0 + 40},{py0 + 16} L{px0},{py0 + 8} Z" fill="none" stroke="{LINIE}" stroke-width="1.3"/>')
-    o.append(f'<circle cx="{px0 + 80}" cy="{py0}" r="16" fill="none" stroke="{LINIE}" stroke-width="1.3"/>')
-    o.append(f'<circle cx="{px0 + 80}" cy="{py0}" r="8" fill="none" stroke="{LINIE}" stroke-width="1.3"/>')
-    o.append(f'<line x1="{px0 - 8}" y1="{py0}" x2="{px0 + 104}" y2="{py0}" {mitte}/>')
-    o.append(f'<text x="{px0 + 50}" y="{py0 + 36}" text-anchor="middle" font-size="11" fill="{MASS}">Projektionsmethode 1</text>')
+    # ---------- Symbol Projektionsmethode 3 ----------
+    unten = EZ(rb) + 100
+    px0, py0 = 960.0, unten + 20
+    o.append(f'<circle cx="{px0}" cy="{py0}" r="16" fill="none" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<circle cx="{px0}" cy="{py0}" r="8" fill="none" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<path d="M{px0 + 40},{py0 - 8} L{px0 + 80},{py0 - 16} L{px0 + 80},{py0 + 16} L{px0 + 40},{py0 + 8} Z" fill="none" stroke="{LINIE}" stroke-width="1.3"/>')
+    o.append(f'<line x1="{px0 - 24}" y1="{py0}" x2="{px0 + 88}" y2="{py0}" {mitte}/>')
+    o.append(f'<text x="{px0 + 30}" y="{py0 + 36}" text-anchor="middle" font-size="11" fill="{MASS}">Projektionsmethode 3</text>')
 
     # ---------- offen ----------
     fehl = [
@@ -361,7 +361,7 @@ def halter() -> str:
         "3  Strahlachse über der Unterseite (Tiefenmaß von unten bis Mitte Ring) – gerechnet 11,4",
     ]
     for k, t in enumerate(fehl):
-        o.append(f'<text x="20" y="{850 + k*22}" font-size="13" {"font-weight=\"bold\"" if k == 0 else ""}>{t}</text>')
+        o.append(f'<text x="20" y="{unten + k*22}" font-size="13" {"font-weight=\"bold\"" if k == 0 else ""}>{t}</text>')
     o.append("</svg>")
     return "\n".join(o)
 
