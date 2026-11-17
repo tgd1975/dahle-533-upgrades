@@ -86,6 +86,8 @@ Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf
 | L-7 (Linie) | Laser an 2 × AAA (rot an Plus), auf den Tisch richten: Dicke der Linie nah und in etwa 35 cm, gut sichtbar bei Raumlicht? | entscheidet zwischen KW-triO-Modul und Picotronic |
 | L-8 (Fächerwinkel) | Laser 100 mm über dem Tisch senkrecht nach unten halten, Länge der Linie messen | Neigung und Höhe am Reiter |
 
+![Messstellen L-1 bis L-3 an der hinteren Ecke der 533](bilder/laser_messstellen.jpg)
+
 Dazu ein Foto der hinteren rechten Ecke der 533 (Drehpunkt), schräg von oben.
 
 ## Risiken
