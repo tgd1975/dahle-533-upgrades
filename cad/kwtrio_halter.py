@@ -33,7 +33,7 @@ HALTER = {
     "laenge": 21.5,        # Körper (ohne Vorbau)
     "achse": 11.4,         # Strahlachse über der Unterseite
     "rohr_d": 12.0,        # Drehrohr, überall gleich
-    "rohr_v": 1.2,         # halbrunder Vorbau oben (und Drehrohr) steht vorne vor
+    "rohr_v": 1.4,         # halbrunder Vorbau oben (und Drehrohr) steht vorne vor: gesamt 22,9 gemessen − 21,5
     "rohr_frei": 7.0,      # Drehrohr liegt hinten so lang frei
     "modul_d": 9.0,        # Messinghülse des Lasermoduls – geschätzt
     "wand": 1.5,           # Wand der offenen Unterseite
