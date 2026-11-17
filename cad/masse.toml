@@ -1,0 +1,56 @@
+# Maße für den Anschlagschieber der Dahle 533 – alle Werte in mm.
+#
+# [winkelanlage] beschreibt den Querschnitt der grauen Kunststoffschiene mit der
+# Nut (beide Winkelanlagen sind gleich). Gemessen am 2026-11-16 mit dem
+# Messschieber (Fotos in docs/fotos/): Gesamtbreite 18,0 · Nut 4,0 · ein Steg 6,5
+# (der andere damit 7,5) · innerer Steg 7,0 hoch · äußerer Steg 9,5 hoch ·
+# Nutgrund 6,0 unter der Oberkante des äußeren Stegs.
+# Nach dem Ändern:  uv run cad/bauen.py 2>&1 | cat
+
+[winkelanlage]
+gemessen       = true
+innensteg_b    = 6.5    # A  Breite des inneren (niedrigen) Stegs
+innensteg_h    = 7.0    # B  Höhe des inneren Stegs über dem Tisch
+nut_b          = 4.0    # C  Breite der Nut zwischen den beiden Stegen
+nut_t          = 3.5    # D  Tiefe der Nut ab Oberkante innerer Steg = 7,0 − (9,5 − 6,0)
+aussensteg_h   = 9.5    # E  Höhe des äußeren Stegs über dem Tisch (nur zur Kontrolle)
+
+[schieber]
+laenge         = 135.0  # Balken auf dem Tisch, ab Innenkante der Winkelanlage
+breite         = 30.0   # Balkenbreite = Länge der Anlage an der Schiene im Balken
+hoehe          = 14.0   # Höhe der Anschlagfläche; lässt 6,5 mm Kopf über dem 7 mm hohen Steg
+kopf_breite    = 50.0   # Kopf über der Schiene: je 10 mm Überstand, längere Führung in der Nut
+magnete        = 4      # Scheibenmagnete Ø10×3 (supermagnete S-10-03-N, N42)
+magnet_d       = 10.0   # Datenblatt: Ø10 ±0,1
+magnet_h       = 3.0    # Datenblatt: 3 ±0,1
+
+[spiel]
+nut_seitlich   = 0.3    # Luft je Seite zwischen Zunge und Nutwand
+ueber_steg     = 0.5    # Luft zwischen Kopf und Oberkante des inneren Stegs
+nut_grund      = 0.6    # Luft zwischen Zunge und Nutgrund
+magnet_d       = 0.25   # Zugabe auf den Taschendurchmesser (Einkleben)
+magnet_versatz = 0.3    # Magnet sitzt so weit hinter der Unterseite (kratzt nicht)
+
+# Asymmetrischer Schieber: lange Führung nur zu einer Seite, zur Messerseite bündig.
+# Geführt wird er von der durchgehenden starren Zunge mit leichtem Spiel – die Länge
+# macht das Spiel unschädlich. Vier vorhandene Magnete halten ihn am Tisch.
+# Verlauf: Die erste Passprobe (2026-11-16) hatte eine beidseitig eingespannte Feder mit
+# 0,7 mm Vorspannung nahe der Anschlagfläche – viel zu stramm, in Messernähe außerhalb
+# der Schiene. Die zweite Fassung hatte zwei weiche Federzungen; auf Wunsch des Besitzers
+# ohne Federn (2026-11-17). Die Federn bleiben als Option im Modell (federn = [32.0, 91.0]).
+[asym]
+schiene           = "vorne"  # "vorne" = Winkelanlage vor dem Bediener (Messer rechts); "hinten" baut das Spiegelbild
+laenge            = 200.0    # Balken auf dem Tisch, ab Innenkante der Winkelanlage
+breite            = 30.0     # Balkenbreite
+hoehe             = 14.0     # Höhe der Anschlagfläche
+fuehrung          = 120.0    # Länge der Führung entlang der Schiene, ab Anschlagfläche
+luft_nut          = 0.2      # Spiel der starren Zunge in der Nut (gesamt): Zunge 3,8 in der 4,0-mm-Nut (Wunsch des Besitzers, 2026-11-17)
+luft_anlage       = 0.4      # Luft zwischen Balkenstirn und Innenkante der Schiene; muss größer sein als luft_nut
+federn            = []       # ohne Federn (Wunsch des Besitzers, 2026-11-17); mit Federn: Einspannstellen ab Anschlagfläche, z. B. [32.0, 91.0]
+feder_laenge      = 15.0     # Einspannung bis Nasenmitte
+feder_dicke       = 1.0      # Dicke der Federzunge
+feder_vorspannung = 0.6      # so weit wird die Nase eingedrückt, wenn die Zunge am inneren Steg anliegt
+magnete           = 4        # vorhandene Scheibenmagnete, vom Besitzer gemessen (2026-11-16); Tasche passt (Passprobe)
+magnet_d          = 9.7      # Durchmesser ca. 9,7
+magnet_h          = 4.4      # Höhe ca. 4,4
+magnet_luft_d     = 0.4      # Zugabe auf den Taschendurchmesser (Maße sind "ca.", Magnete werden eingeklebt)
