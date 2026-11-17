@@ -131,8 +131,9 @@ def querschnitt() -> str:
 
 
 def laser() -> str:
-    # Werte aus docs/laser.md (Konzept)
-    hoehe, versatz, linie, neigung, faecher = 70.0, 20.0, 340.0, 35.0, 90.0
+    # Werte aus docs/laser.md (Konzept): Laser auf dem Lagerbock (Ø31, 31,6 hoch), Strahlachse 11,4 über dem Halter
+    bock_d, bock_h = 31.0, 31.6
+    hoehe, versatz, linie, neigung, faecher = bock_h + 11.4, bock_d / 2, 340.0, 50.0, 90.0
 
     s = 1.7  # px je mm
     x0, y0 = 300.0, 330.0  # Punkt auf dem Tisch unter dem Laser
@@ -171,18 +172,20 @@ def laser() -> str:
     o.append(mass_h(px(versatz), px(versatz + linie), y0 + 40, f"Schnittkante = Laserlinie, {zahl(linie).replace(',0', '')} mm", oben=False))
     o.append(f'<text x="{px(versatz)}" y="{y0 + 90}">hinten (Drehpunkt)</text>')
     o.append(f'<text x="{px(versatz + linie)}" y="{y0 + 90}" text-anchor="end">vorne (Griff)</text>')
-    # Reiter mit Ausleger
-    o.append(f'<rect x="{px(-14)}" y="{py(4)}" width="{28 * s}" height="{4 * s}" fill="{SCHIENE}" stroke="{LINIE}"/>')
-    o.append(f'<rect x="{px(-3)}" y="{py(hoehe - 5)}" width="{6 * s}" height="{(hoehe - 9) * s}" fill="{SCHIENE}" stroke="{LINIE}"/>')
-    o.append(f'<text x="{px(-16)}" y="{py(30)}" text-anchor="end">Reiter auf der</text>')
-    o.append(f'<text x="{px(-16)}" y="{py(30) + 18}" text-anchor="end">hinteren Winkelanlage</text>')
+    # Lagerbock (Drehachse des Messers) und Sattel darauf
+    o.append(f'<circle cx="{px(0)}" cy="{py(bock_h - bock_d / 2)}" r="{bock_d / 2 * s}" fill="{SCHIENE}" stroke="{LINIE}" stroke-width="1.5"/>')
+    o.append(f'<rect x="{px(-12)}" y="{py(bock_h + 4)}" width="{24 * s}" height="{7 * s}" fill="#c9d6c2" stroke="{LINIE}"/>')
+    o.append(f'<text x="{px(-bock_d / 2) - 10}" y="{py(bock_h / 2)}" text-anchor="end">Lagerbock Ø31</text>')
+    o.append(f'<text x="{px(-bock_d / 2) - 10}" y="{py(bock_h / 2) + 18}" text-anchor="end">(Drehachse des Messers)</text>')
+    o.append(f'<text x="{px(-14)}" y="{py(bock_h + 1)}" text-anchor="end">Sattel mit Keil</text>')
     # Lasermodul Ø9 × 26, um die Neigung gedreht
     o.append(
         f'<g transform="translate({lx:.1f},{ly:.1f}) rotate({neigung})">'
-        f'<rect x="{-26 * s:.1f}" y="{-4.5 * s:.1f}" width="{26 * s:.1f}" height="{9 * s:.1f}" rx="2" '
-        f'fill="#b08d3c" stroke="{LINIE}"/></g>'
+        f'<rect x="{-22.9 * s:.1f}" y="{-7.7 * s:.1f}" width="{22.9 * s:.1f}" height="{15.5 * s:.1f}" rx="2" '
+        f'fill="#c8c8c8" stroke="{LINIE}"/></g>'
     )
-    o.append(f'<text x="{lx - 60}" y="{ly - 50}" text-anchor="end">Laser, ~{zahl(hoehe).replace(",0", "")} mm über dem Tisch,</text>')
+    o.append(f'<text x="{lx - 60}" y="{ly - 68}" text-anchor="end">Zinkhalter mit Laser,</text>')
+    o.append(f'<text x="{lx - 60}" y="{ly - 50}" text-anchor="end">Strahl ~{hoehe:.0f} mm über dem Tisch,</text>')
     o.append(f'<text x="{lx - 60}" y="{ly - 32}" text-anchor="end">~{zahl(neigung).replace(",0", "")}° nach unten geneigt</text>')
     o.append(f'<text x="{px(150)}" y="{py(52)}" fill="{ROT}">Lichtfächer {zahl(faecher).replace(",0", "")}°</text>')
     o.append(f'<text x="20" y="30" font-size="13" fill="{MASS}">Blick quer zur Schnittebene, maßstäblich, Maße in mm</text>')
