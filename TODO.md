@@ -7,7 +7,7 @@ nach „## Erledigt“ ans Dateiende verschieben (neueste zuerst), nie löschen.
 
 ## Für dich
 
-- [ ] TD-5 - **Laser messen:** an der 533 L-1 bis L-3 samt Foto der Drehpunkt-Ecke, am KW-triO ohne Ausbau L-4 und L-5 ([docs/laser.md](docs/laser.md), Abschnitt „Offene Maße“) – danach steht fest, ob der KW-triO-Laser an die 533 passt und ob sich der Ausbau lohnt. *(dahle533-upgrades)*
+- [ ] TD-5 - **Laser messen:** an der 533 L-1 bis L-3 samt Foto der Drehpunkt-Ecke, am KW-triO ohne Ausbau L-4, L-5 und den Sichttest L-7 ([docs/laser.md](docs/laser.md), Abschnitt „Offene Maße“) – danach steht fest, ob der KW-triO-Laser an die 533 passt und ob sich der Ausbau lohnt. *(dahle533-upgrades)*
 - [ ] TD-7 - **Asymmetrischen Schieber drucken:** Platte 2 aus [druck/dahle533_asymmetrisch.3mf](druck/dahle533_asymmetrisch.3mf) (in Bambu Studio slicen, etwa 91 min, 47 g, mit Brim), sobald die Passprobe passt; die vier gefundenen Magnete mit Sekundenkleber einkleben. *(dahle533-upgrades)*
 - [ ] TD-9 - **Auf Printables veröffentlichen:** Lizenz dort „Creative Commons – Attribution“ (CC BY 4.0) wählen, wie im Repo; Fotos aus [docs/fotos/](docs/fotos/) sind ohne GPS. *(dahle533-upgrades)*
 

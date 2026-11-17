@@ -52,6 +52,10 @@ Schnittlänge) hat einen Schnittlinien-Laser, der sich ausbauen lässt. Was die 
 | Innensechskantschraube oben im Lagerblock, mit Drehpfeilen | dreht die Linie; der Halter für die 533 hat seine eigene Einstellung |
 | 2 × AAA im Fuß eingeformt, roter Taster | 3 V wie beim Picotronic-Modul; Batteriefach und Taster bleiben im KW-triO, der Halter bekommt einen Batteriehalter 2 × AAA mit Schalter |
 
+Das Modul stammt aus einem Gerät für unter 35 €: Linienqualität und Leistung sind ohne Datenblatt. Die Linie im
+KW-triO zeigt, was es an der 533 leisten würde (L-7). Die Klassenangabe eines Billiggeräts ist nicht verlässlich –
+die Auslegung mit Fächer nur auf den Tisch und Blende hält auch ein stärkeres Modul unter Augenhöhe.
+
 Niedrig montiert braucht der Reiter keinen hohen Ausleger, und das Licht bleibt nahe am Tisch, weit unter Augenhöhe.
 Ob der Laser bei der 533 niedrig sitzen kann oder über den Lagerbock hinwegsehen muss, entscheidet L-2.
 
@@ -74,6 +78,7 @@ Gerichtet wird einmal: Blatt schneiden, Schnittkante liegen lassen, Linie darauf
 | L-3 (Schienenende) | Abstand vom messerseitigen Ende der hinteren Winkelanlage zur Schnittkante | Länge des Auslegers |
 | L-4 (Austrittshöhe KW-triO) | Höhe der Mitte des Austrittslochs über dem Tisch des KW-triO – ohne Ausbau | Höhe, aus der der Laser eine brauchbare Linie zeichnet |
 | L-5 (Linienbeginn KW-triO) | Abstand vom Austrittsloch bis zum Beginn der Linie auf dem Tisch, und ob die Linie bis zum vorderen Ende reicht – ohne Ausbau | steilster Strahl des Fächers, Reichweite |
+| L-7 (Linie KW-triO) | Linie im KW-triO einschalten und ansehen: Dicke am nahen und am fernen Ende, gut sichtbar bei Raumlicht? – ohne Ausbau | entscheidet zwischen KW-triO-Modul und Picotronic |
 | L-6 (Modul KW-triO) | Durchmesser und Länge des Moduls, Befestigung, Kabellänge – erst nach dem Ausbau | Aufnahme im Halter |
 
 Dazu ein Foto der hinteren rechten Ecke der 533 (Drehpunkt), schräg von oben.
