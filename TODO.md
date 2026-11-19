@@ -8,11 +8,11 @@ nach „## Erledigt“ ans Dateiende verschieben (neueste zuerst), nie löschen.
 ## Für dich
 
 - [ ] TD-5 - **Laser messen:** L-8 (Fächerwinkel) und L-10 (Messer-Innenseite bis Schnittkante am Lagerbock) – [docs/laser.md](docs/laser.md), Abschnitt „Offene Maße“; danach zeichne ich den Sattel. *(dahle533-upgrades)*
-- [ ] TD-7 - **Asymmetrischen Schieber drucken:** Platte 2 aus [druck/dahle533_asymmetrisch.3mf](druck/dahle533_asymmetrisch.3mf) (in Bambu Studio slicen, etwa 91 min, 47 g, mit Brim), sobald die Passprobe passt; die vier gefundenen Magnete mit Sekundenkleber einkleben. *(dahle533-upgrades)*
-- [ ] TD-9 - **Auf Printables veröffentlichen:** Lizenz dort „Creative Commons – Attribution“ (CC BY 4.0) wählen, wie im Repo; Fotos aus [docs/fotos/](docs/fotos/) sind ohne GPS. *(dahle533-upgrades)*
 
 ## Erledigt
 
+- [x] TD-9 - **Auf Printables veröffentlicht:** [200 mm, lange Führung](https://www.printables.com/model/1922419) und [135 mm, symmetrisch](https://www.printables.com/model/1922416), je nur STL, CC BY 4.0. [2026-11-19]
+- [x] TD-7 - **Asymmetrischen Schieber gedruckt:** in Gebrauch, die vier Magnete eingeklebt (Fotos auf Printables). [2026-11-19]
 - [x] TD-2 - **Passprobe symmetrisch:** verworfen – die symmetrische Variante wird nicht gedruckt, es bleibt bei der asymmetrischen. [2026-11-17]
 - [x] TD-3 - **Magnete für die symmetrische Variante:** verworfen – die symmetrische Variante wird nicht gedruckt; die asymmetrische nutzt die vier vorhandenen Magnete. [2026-11-17]
 - [x] TD-4 - **Anschlagschieber symmetrisch drucken:** verworfen – wird nicht gedruckt. [2026-11-17]
